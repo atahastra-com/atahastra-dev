@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 
 const BASE_URL = 'https://atahastra.com'
-const DEFAULT_TITLE = 'Atahastra | Web Development, UI/UX Design & Mobile Apps'
-const DEFAULT_DESCRIPTION =
-  'Atahastra is a digital agency specializing in web development, UI/UX design, mobile apps, and no-code solutions for startups and growing brands. One team from idea to launch.'
+const DEFAULT_TITLE = 'Atahastra'
+const DEFAULT_DESCRIPTION = 'Atahastra. Proxim and My Simple Resume.'
 
 function setMeta(attr, key, content) {
   if (!content) return

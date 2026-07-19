@@ -1,49 +1,67 @@
 import { Link } from 'react-router-dom'
 import Logo from '../ui/Logo'
 import SocialLinks from '../ui/SocialLinks'
+import { products } from '../../data/products'
 
 const companyLinks = [
-  { label: 'About Us', to: '/about' },
+  { label: 'About', to: '/about' },
   { label: 'Careers', to: '/careers' },
-  { label: 'Contact Us', to: '/about#contact' },
+  { label: 'Contact', to: '/about#contact' },
 ]
 
 const linkClass = 'cursor-pointer text-sm text-gray-muted transition-colors hover:text-foreground'
 
 export default function Footer() {
   return (
-    <footer className="bg-page">
-      <div className="section-container pb-12 pt-8 md:pb-16 md:pt-10">
-        <div className="flex flex-col items-start justify-between gap-4 border-b border-border pb-8 md:flex-row md:items-center">
-          <Logo />
-          <p className="text-xs font-medium uppercase tracking-widest text-gray-muted">
-            Digital experiences. Built to perform.
-          </p>
+    <footer className="border-t border-white/[0.06] bg-page">
+      <div className="section-container py-12 md:py-16">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <Logo size="md" />
+
+          <div className="flex flex-wrap gap-x-16 gap-y-8">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-muted">
+                Products
+              </p>
+              <nav className="mt-4 flex flex-col gap-3">
+                {products.map((product) =>
+                  product.href ? (
+                    <a
+                      key={product.id}
+                      href={product.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}
+                    >
+                      {product.name}
+                    </a>
+                  ) : (
+                    <span key={product.id} className="text-sm text-gray-muted">
+                      {product.name}
+                    </span>
+                  ),
+                )}
+              </nav>
+            </div>
+
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-muted">
+                Company
+              </p>
+              <nav className="mt-4 flex flex-col gap-3">
+                {companyLinks.map((link) => (
+                  <Link key={link.label} to={link.to} className={linkClass}>
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </div>
         </div>
 
-        <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 py-8">
-          {companyLinks.map((link) =>
-            link.href ? (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkClass}
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link key={link.label} to={link.to} className={linkClass}>
-                {link.label}
-              </Link>
-            ),
-          )}
-        </nav>
-
-        <div className="flex flex-col items-start justify-between gap-4 border-t border-border pt-8 md:flex-row md:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/[0.06] pt-8 md:flex-row md:items-center">
           <p className="text-sm text-gray-muted">
-            © {new Date().getFullYear()} Atahastra. All Rights Reserved.
+            © {new Date().getFullYear()} Atahastra
           </p>
           <SocialLinks />
         </div>

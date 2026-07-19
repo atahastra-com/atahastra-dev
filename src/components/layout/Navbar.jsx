@@ -1,19 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from '../ui/Logo'
-import { BOOKING_URL } from '../../data/booking'
 import { products } from '../../data/products'
 
-const navLinks = [
-  { label: 'Services', to: '/#services' },
-  { label: 'Work', to: '/#process' },
-  { label: 'About Us', to: '/about' },
-]
+const navLinks = [{ label: 'About', to: '/about' }]
 
 function ChevronDown({ open }) {
   return (
     <svg
-      className={`h-4 w-4 shrink-0 transition-transform duration-300 ease-out ${open ? 'rotate-180' : ''}`}
+      className={`h-3.5 w-3.5 shrink-0 transition-transform duration-300 ease-out ${open ? 'rotate-180' : ''}`}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -21,21 +16,6 @@ function ChevronDown({ open }) {
       aria-hidden="true"
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
-    </svg>
-  )
-}
-
-function ArrowRight() {
-  return (
-    <svg
-      className="h-5 w-5 shrink-0 text-gray-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-foreground"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-      aria-hidden="true"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   )
 }
@@ -133,114 +113,129 @@ export default function Navbar() {
 
   return (
     <>
-    <header className="relative sticky top-0 z-50 bg-page/95 backdrop-blur-sm">
-      <div className="section-container flex h-16 items-center justify-between md:h-20">
-        <Logo size="lg" />
+      <header className="relative sticky top-0 z-50 border-b border-white/[0.06] bg-page/80 backdrop-blur-xl">
+        <div className="section-container flex h-14 items-center justify-between md:h-16">
+          <Logo size="md" />
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <div ref={toggleRef}>
-            <button
-              type="button"
-              onClick={toggleProductsDropdown}
-              aria-expanded={productsOpen}
-              aria-haspopup="true"
-              className={`flex cursor-pointer items-center gap-1.5 text-sm transition-colors ${
-                productsOpen ? 'text-foreground' : 'text-gray-muted hover:text-foreground'
-              }`}
-            >
-              Our Products
-              <ChevronDown open={productsOpen} />
-            </button>
-          </div>
+          <nav className="hidden items-center gap-7 md:flex">
+            <div ref={toggleRef}>
+              <button
+                type="button"
+                onClick={toggleProductsDropdown}
+                aria-expanded={productsOpen}
+                aria-haspopup="true"
+                className={`flex cursor-pointer items-center gap-1.5 text-sm transition-colors ${
+                  productsOpen ? 'text-foreground' : 'text-gray-muted hover:text-foreground'
+                }`}
+              >
+                Products
+                <ChevronDown open={productsOpen} />
+              </button>
+            </div>
 
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={linkClass(link.to)}
-              onClick={closeProductsDropdown}
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={linkClass(link.to)}
+                onClick={closeProductsDropdown}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href="https://mysimpleresume.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer rounded-full bg-foreground px-4 py-2 text-sm font-medium text-page transition-opacity hover:opacity-90"
             >
-              {link.label}
-            </Link>
-          ))}
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-pointer rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-page transition-opacity hover:opacity-90"
+              My Simple Resume
+            </a>
+          </nav>
+
+          <button
+            type="button"
+            className="flex cursor-pointer flex-col gap-1.5 p-2 md:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            Schedule a Call
-          </a>
-        </nav>
+            <span
+              className={`block h-0.5 w-5 bg-foreground transition-transform ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-foreground transition-opacity ${menuOpen ? 'opacity-0' : ''}`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-foreground transition-transform ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''}`}
+            />
+          </button>
+        </div>
 
-        <button
-          type="button"
-          className="flex cursor-pointer flex-col gap-1.5 p-2 md:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span className={`block h-0.5 w-6 bg-foreground transition-transform ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`block h-0.5 w-6 bg-foreground transition-opacity ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block h-0.5 w-6 bg-foreground transition-transform ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
-        </button>
-      </div>
+        {productsVisible && (
+          <div
+            ref={panelRef}
+            className={`absolute inset-x-0 top-full overflow-hidden border-b border-white/[0.06] bg-page/95 backdrop-blur-xl ${
+              productsClosing ? 'products-dropdown-closing' : 'products-dropdown'
+            }`}
+          >
+            <div className="section-container py-8 md:py-10">
+              <div className="grid gap-2 sm:grid-cols-2">
+                {products.map((product) => {
+                  const isLive = product.status === 'live' && product.href
+                  const itemClass =
+                    'group rounded-xl px-5 py-5 transition-colors hover:bg-white/[0.04]'
 
-      {productsVisible && (
-        <div
-          ref={panelRef}
-          className={`absolute inset-x-0 top-full overflow-hidden bg-page ${
-            productsClosing ? 'products-dropdown-closing' : 'products-dropdown'
-          }`}
-        >
-          <div className="section-container">
-            <div className="border-b border-accent/35 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
-              <div className="py-8 md:py-10">
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-muted">Our Products</p>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {products.map((product) => (
-                    <a
-                      key={product.href}
-                      href={product.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={closeProductsDropdown}
-                      className="group relative block overflow-hidden rounded-2xl border border-white/5 transition-shadow duration-300 hover:shadow-[0_0_16px_rgba(255,255,255,0.08)]"
-                    >
-                      <img
-                        src="/hero.png"
-                        alt=""
-                        aria-hidden="true"
-                        loading="lazy"
-                        decoding="async"
-                        className="absolute inset-0 h-full w-full object-cover brightness-[0.35] saturate-75 transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/80" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-amber-950/40 via-black/60 to-black/90" />
-
-                      <div className="relative z-10 p-6">
-                        <div className="flex items-start justify-between gap-4">
-                          <h3 className="text-base font-bold text-gray-muted transition-colors group-hover:text-foreground">
-                            {product.name}
-                          </h3>
-                          <ArrowRight />
-                        </div>
-                        <p className="mt-2 text-sm leading-relaxed text-gray-muted">{product.description}</p>
-                        <span className="mt-4 inline-block text-sm text-accent">mysimpleresume.com</span>
+                  const inner = (
+                    <>
+                      <div className="flex items-center justify-between gap-3">
+                        <h3 className="text-base font-semibold text-foreground">{product.name}</h3>
+                        {isLive ? (
+                          <span
+                            aria-hidden="true"
+                            className="text-gray-muted transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-foreground"
+                          >
+                            →
+                          </span>
+                        ) : (
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+                            Soon
+                          </span>
+                        )}
                       </div>
-                    </a>
-                  ))}
-                </div>
+                      <p className="mt-1.5 text-sm text-gray-muted">{product.tagline}</p>
+                    </>
+                  )
+
+                  if (isLive) {
+                    return (
+                      <a
+                        key={product.id}
+                        href={product.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeProductsDropdown}
+                        className={itemClass}
+                      >
+                        {inner}
+                      </a>
+                    )
+                  }
+
+                  return (
+                    <div key={product.id} className={`${itemClass} cursor-default`} aria-disabled="true">
+                      {inner}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
-        </div>
-      )}
-
-    </header>
+        )}
+      </header>
 
       {menuOpen && (
-        <nav className="fixed inset-x-0 top-16 z-40 flex h-[calc(100dvh-4rem)] w-full flex-col overflow-y-auto bg-page md:hidden">
+        <nav className="fixed inset-x-0 top-14 z-40 flex h-[calc(100dvh-3.5rem)] w-full flex-col overflow-y-auto bg-page md:hidden">
           <div className="section-container flex h-full flex-1 flex-col gap-8 py-8 pb-10">
             <div>
               <button
@@ -249,29 +244,43 @@ export default function Navbar() {
                 aria-expanded={mobileProductsOpen}
                 className="flex w-full cursor-pointer items-center justify-between text-lg font-medium text-gray-muted transition-colors hover:text-foreground"
               >
-                Our Products
+                Products
                 <ChevronDown open={mobileProductsOpen} />
               </button>
               {mobileProductsOpen && (
-                <div className="mt-4 space-y-4 border-l border-border pl-4">
-                  {products.map((product) => (
-                    <a
-                      key={product.href}
-                      href={product.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => {
-                        setMenuOpen(false)
-                        setMobileProductsOpen(false)
-                      }}
-                      className="group block cursor-pointer"
-                    >
-                      <span className="text-base font-medium text-gray-muted transition-colors group-hover:text-foreground">
-                        {product.name}
-                      </span>
-                      <span className="mt-1 block text-sm text-gray-muted">mysimpleresume.com</span>
-                    </a>
-                  ))}
+                <div className="mt-4 space-y-1">
+                  {products.map((product) => {
+                    const isLive = product.status === 'live' && product.href
+                    const rowClass = 'block rounded-xl px-4 py-3'
+
+                    if (isLive) {
+                      return (
+                        <a
+                          key={product.id}
+                          href={product.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            setMenuOpen(false)
+                            setMobileProductsOpen(false)
+                          }}
+                          className={`${rowClass} hover:bg-white/[0.04]`}
+                        >
+                          <span className="text-base font-medium text-foreground">{product.name}</span>
+                          <span className="mt-1 block text-sm text-gray-muted">{product.tagline}</span>
+                        </a>
+                      )
+                    }
+
+                    return (
+                      <div key={product.id} className={rowClass}>
+                        <span className="text-base font-medium text-foreground">{product.name}</span>
+                        <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                          Coming soon
+                        </span>
+                      </div>
+                    )
+                  })}
                 </div>
               )}
             </div>
@@ -288,13 +297,13 @@ export default function Navbar() {
             ))}
 
             <a
-              href={BOOKING_URL}
+              href="https://mysimpleresume.com"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-auto cursor-pointer rounded-full bg-foreground px-5 py-3.5 text-center text-base font-medium text-page"
               onClick={() => setMenuOpen(false)}
             >
-              Schedule a Call
+              My Simple Resume
             </a>
           </div>
         </nav>

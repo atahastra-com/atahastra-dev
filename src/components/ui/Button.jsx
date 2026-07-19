@@ -14,7 +14,7 @@ export default function Button({
   href,
   ...props
 }) {
-  const classes = `inline-flex cursor-pointer items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 ${variants[variant]} ${className}`
+  const classes = `inline-flex cursor-pointer items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] ${variants[variant]} ${className}`
 
   if (href) {
     return (
