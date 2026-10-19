@@ -1,7 +1,7 @@
 {
   "name": "Atahastra",
   "short_name": "Atahastra",
-  "description": "Atahastra. Proxim and My Simple Resume.",
+  "description": "Atahastra. Epistemic infrastructure and Proxim.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",

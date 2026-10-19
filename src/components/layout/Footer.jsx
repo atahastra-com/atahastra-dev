@@ -1,56 +1,69 @@
 import { Link } from 'react-router-dom'
 import Logo from '../ui/Logo'
 import SocialLinks from '../ui/SocialLinks'
-import { products } from '../../data/products'
+import { CONTACT_EMAIL } from '../../data/contact'
 
 const companyLinks = [
   { label: 'About', to: '/about' },
   { label: 'Careers', to: '/careers' },
-  { label: 'Contact', to: '/about#contact' },
+  { label: 'Contact', to: '/contact' },
 ]
 
-const linkClass = 'cursor-pointer text-sm text-gray-muted transition-colors hover:text-foreground'
+const serviceLinks = [
+  { label: 'Custom web apps & AI', to: '/services' },
+  { label: 'Mobile engineering', to: '/services' },
+  { label: 'Shopify & ecommerce', to: '/services' },
+  { label: 'Performance websites', to: '/services' },
+]
 
 export default function Footer() {
-  return (
-    <footer className="border-t border-white/[0.06] bg-page">
-      <div className="section-container py-12 md:py-16">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <Logo size="md" />
+  const currentYear = new Date().getFullYear()
 
-          <div className="flex flex-wrap gap-x-16 gap-y-8">
+  return (
+    <footer className="border-t border-white/[0.08] bg-black">
+      <div className="section-container py-14 md:py-16">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+          <div className="max-w-sm">
+            <Logo size="md" />
+            <p className="mt-4 text-sm leading-relaxed text-gray-400">
+              Atahastra is a design and development agency building websites,
+              mobile apps, Shopify stores, web apps, and UI.
+            </p>
+            <p className="mt-3 text-xs text-gray-500 font-mono">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
+                {CONTACT_EMAIL}
+              </a>
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-8 sm:flex-row sm:gap-12">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-muted">
-                Products
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                Services
               </p>
-              <nav className="mt-4 flex flex-col gap-3">
-                {products.map((product) =>
-                  product.href ? (
-                    <a
-                      key={product.id}
-                      href={product.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={linkClass}
-                    >
-                      {product.name}
-                    </a>
-                  ) : (
-                    <span key={product.id} className="text-sm text-gray-muted">
-                      {product.name}
-                    </span>
-                  ),
-                )}
+              <nav className="mt-4 flex flex-col gap-2.5">
+                {serviceLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </nav>
             </div>
-
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-muted">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
                 Company
               </p>
-              <nav className="mt-4 flex flex-col gap-3">
+              <nav className="mt-4 flex flex-col gap-2.5">
                 {companyLinks.map((link) => (
-                  <Link key={link.label} to={link.to} className={linkClass}>
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                  >
                     {link.label}
                   </Link>
                 ))}
@@ -59,10 +72,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/[0.06] pt-8 md:flex-row md:items-center">
-          <p className="text-sm text-gray-muted">
-            © {new Date().getFullYear()} Atahastra
-          </p>
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-gray-500">
+          <p>© {currentYear} Atahastra. All rights reserved.</p>
           <SocialLinks />
         </div>
       </div>

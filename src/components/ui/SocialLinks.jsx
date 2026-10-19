@@ -2,7 +2,7 @@ import { socialLinks } from '../../data/socialLinks'
 
 export default function SocialLinks({ className = '' }) {
   return (
-    <div className={`flex gap-4 ${className}`}>
+    <div className={`flex items-center gap-3 ${className}`}>
       {socialLinks.map((link) => (
         <a
           key={link.label}
@@ -10,9 +10,9 @@ export default function SocialLinks({ className = '' }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={link.label}
-          className="cursor-pointer text-gray-muted transition-colors hover:text-foreground"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.1] bg-white/[0.02] text-gray-400 transition-colors hover:border-white/30 hover:text-white"
         >
-          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
             <path d={link.path} />
           </svg>
         </a>
