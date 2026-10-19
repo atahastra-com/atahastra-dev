@@ -18,7 +18,7 @@ export const services = [
     number: '02',
     slug: 'cross-platform-mobile-engineering',
     title: 'Cross-Platform Mobile Engineering',
-    short: 'iOS and Android apps from a single codebase—fully engineered, tested, and shipped to the stores.',
+    short: 'iOS and Android apps from a single codebase: fully engineered, tested, and shipped to the stores.',
     description:
       'One high-performance codebase for both platforms. We handle product design, development, push notifications, auth, real-time sync, and complete App Store and Play Console submissions so you can focus on your users.',
     deliverables: [
@@ -33,7 +33,7 @@ export const services = [
     number: '03',
     slug: 'high-conversion-shopify-ecommerce',
     title: 'High-Conversion Shopify & Ecommerce',
-    short: 'High-converting Shopify stores—custom Liquid/headless builds, checkout CRO, and ERP/inventory integrations.',
+    short: 'High-converting Shopify stores with custom Liquid/headless builds, checkout CRO, and ERP/inventory integrations.',
     description:
       'We build new Shopify stores and rescue slow ones: custom Liquid and headless builds, checkout CRO, product page optimisation, platform migrations, and complex ERP and inventory integrations.',
     deliverables: [
@@ -50,7 +50,7 @@ export const services = [
     title: 'Performance Websites & Growth Architecture',
     short: 'High-speed, conversion-engineered marketing platforms with technical SEO, headless CMS, and full analytics baked in.',
     description:
-      'We design and engineer high-speed, conversion-engineered marketing sites—moving beyond basic landing pages to deliver sub-second load times, technical SEO, and full-funnel analytics architecture baked in from day one.',
+      'We design and engineer high-speed, conversion-engineered marketing sites, moving beyond basic landing pages to deliver sub-second load times, technical SEO, and full-funnel analytics architecture baked in from day one.',
     deliverables: [
       'High-speed conversion architecture',
       'Technical SEO & Core Web Vitals',
@@ -63,7 +63,7 @@ export const services = [
     number: '05',
     slug: 'product-ui-ux-design-systems',
     title: 'Product UI / UX & Design Systems',
-    short: 'Clean, usable interfaces—research-backed Figma prototypes, UX audits, and scalable component libraries.',
+    short: 'Clean, usable interfaces with research-backed Figma prototypes, UX audits, and scalable component libraries.',
     description:
       'Research-backed interfaces that look sharp and convert. We deliver comprehensive UX audits, interactive Figma prototypes, and scalable component libraries and design systems primed for clean developer handoff.',
     deliverables: [
@@ -78,7 +78,7 @@ export const services = [
     number: '06',
     slug: 'engineering-retainers-growth',
     title: 'Engineering Retainers & Growth',
-    short: 'Ongoing fractional engineering and CRO partner—handling monthly feature shipping, scaling, security, and conversion improvements.',
+    short: 'Ongoing fractional engineering and CRO partner for monthly feature shipping, scaling, security, and conversion improvements.',
     description:
       'An ongoing fractional engineering and CRO partner for growing teams: monthly feature shipping, performance scaling, automated security backups, and continuous data-driven conversion improvements.',
     deliverables: [

@@ -50,7 +50,7 @@ export default function About() {
               <span className="font-mono text-xs text-gray-500">02</span>
               <h3 className="mt-2 text-base font-semibold text-white">Built to convert</h3>
               <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                Every page and screen has a job — calls, enquiries, checkouts, or
+                Every page and screen has a clear job: calls, enquiries, checkouts, or
                 bookings. Design serves that goal.
               </p>
             </div>
@@ -68,7 +68,7 @@ export default function About() {
         <div className="mt-20 max-w-2xl border-t border-white/[0.08] pt-14">
           <h2 className="text-xl font-bold text-white sm:text-2xl">Start a project</h2>
           <p className="mt-3 text-base text-gray-400">
-            Tell us about your website, app, or store idea — we reply within one
+            Tell us about your website, app, or store idea and we reply within one
             business day.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">

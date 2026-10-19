@@ -16,8 +16,37 @@ export default function Home() {
       {/* ========================================================
           HERO SECTION
          ======================================================== */}
-      <section className="relative pt-20 pb-20 md:pt-28 md:pb-28">
-        <div className="section-container">
+      <section className="relative overflow-hidden pt-20 pb-20 md:pt-28 md:pb-28">
+        {/* Vercel-style background grid */}
+        <div className="pointer-events-none absolute inset-0 z-0 select-none">
+          {/* Subtle top ambient radial spotlight */}
+          <div className="absolute -top-36 left-1/2 -translate-x-1/2 h-[450px] w-[720px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.025)_0%,rgba(255,255,255,0)_70%)] blur-3xl" />
+
+          {/* Symmetrical SVG grid pattern with enhanced visibility and smooth radial fade mask */}
+          <svg
+            className="absolute inset-0 h-full w-full stroke-white/[0.08] [mask-image:radial-gradient(ellipse_80%_65%_at_50%_35%,#000_35%,transparent_100%)]"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="hero-grid-pattern"
+                width={48}
+                height={48}
+                x="50%"
+                y={-1}
+                patternUnits="userSpaceOnUse"
+              >
+                <path d="M.5 48V.5H48" fill="none" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" strokeWidth={0} fill="url(#hero-grid-pattern)" />
+          </svg>
+
+          {/* Subtle top border horizon line */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-500">
               Atahastra • Design & Development Agency
@@ -29,7 +58,7 @@ export default function Home() {
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
               We design and build websites, mobile apps, Shopify stores,
-              custom web apps, and clean UI — fixed quotes, fast delivery, and
+              custom web apps, and clean UI with fixed quotes, fast delivery, and
               support after launch.
             </p>
 
@@ -46,12 +75,6 @@ export default function Home() {
               >
                 View services ↓
               </Link>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs font-mono text-gray-500">
-              <span>Fixed quotes</span>
-              <span>2–6 week delivery</span>
-              <span>Support after launch</span>
             </div>
           </div>
         </div>
@@ -70,7 +93,7 @@ export default function Home() {
               Services built around your business
             </h2>
             <p className="mt-3 text-base text-gray-400">
-              One team for design, build, and launch — so nothing gets lost between freelancers.
+              One team for design, build, and launch so nothing gets lost between freelancers.
             </p>
           </div>
 

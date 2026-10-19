@@ -23,7 +23,7 @@ export default function Careers() {
               Careers
             </h1>
             <p className="mt-8 text-lg leading-relaxed text-gray-300 md:text-xl font-medium">
-              Build real client work — websites, apps, and stores that ship.
+              Build real client work: websites, apps, and stores that ship.
             </p>
             <p className="mt-4 text-base leading-relaxed text-gray-400 md:text-lg">
               We are a small agency team. When we hire, we look for people who care
