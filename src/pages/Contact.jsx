@@ -4,8 +4,23 @@ import Reveal from '../components/ui/Reveal'
 import { CONTACT_EMAIL } from '../data/contact'
 import useSeo from '../hooks/useSeo'
 
+const SERVICE_OPTIONS = [
+  'Custom Web Applications & AI Workflows',
+  'Cross-Platform Mobile Engineering',
+  'High-Conversion Shopify & Ecommerce',
+  'Performance Websites & Growth Architecture',
+  'Product UI / UX & Design Systems',
+  'Engineering Retainers & Growth',
+  'Other / Custom Scope',
+]
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', type: 'Website', project: '' })
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    type: SERVICE_OPTIONS[0],
+    project: '',
+  })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -53,61 +68,116 @@ export default function Contact() {
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-2">
-          <div className="minimal-card rounded-2xl p-8">
+          <div className="relative rounded-2xl border border-white/[0.08] bg-[#090909] p-7 sm:p-9 shadow-2xl">
+            {/* Ambient top border specular highlight */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
             {submitted ? (
-              <div className="text-center py-8">
-                <p className="text-base font-semibold text-white">Request received.</p>
-                <p className="mt-2 text-sm text-gray-400">
-                  Thanks <span className="text-white">{form.name}</span>. We will reply to{' '}
-                  <span className="text-white font-mono">{form.email}</span> within one
-                  business day.
+              <div className="py-12 text-center">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
+                  <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold text-white">Request received</h3>
+                <p className="mx-auto mt-2 max-w-sm text-sm text-gray-400 leading-relaxed">
+                  Thanks <span className="text-white font-medium">{form.name}</span>. We will review your project and reply to{' '}
+                  <span className="text-white font-mono text-xs">{form.email}</span> within one business day.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={update('name')}
-                  placeholder="Your name"
-                  required
-                  className="rounded-full border border-white/[0.14] bg-[#0c0c0c] px-5 py-3 text-sm text-white placeholder-gray-500 focus:border-white focus:outline-none transition-colors"
-                />
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={update('email')}
-                  placeholder="Email address"
-                  required
-                  className="rounded-full border border-white/[0.14] bg-[#0c0c0c] px-5 py-3 text-sm text-white placeholder-gray-500 focus:border-white focus:outline-none transition-colors"
-                />
-                <select
-                  value={form.type}
-                  onChange={update('type')}
-                  className="rounded-full border border-white/[0.14] bg-[#0c0c0c] px-5 py-3 text-sm text-white focus:border-white focus:outline-none transition-colors"
-                >
-                  <option>Website</option>
-                  <option>Mobile app</option>
-                  <option>Shopify store</option>
-                  <option>Custom web app</option>
-                  <option>UI / UX design</option>
-                  <option>Care & growth</option>
-                </select>
-                <textarea
-                  value={form.project}
-                  onChange={update('project')}
-                  placeholder="Describe your project, timeline, and budget range"
-                  required
-                  rows={5}
-                  className="rounded-2xl border border-white/[0.14] bg-[#0c0c0c] px-5 py-3 text-sm text-white placeholder-gray-500 focus:border-white focus:outline-none transition-colors"
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="minimal-button-primary rounded-full px-6 py-3 text-sm font-semibold active:scale-95 disabled:opacity-50"
-                >
-                  {loading ? 'Sending...' : 'Request a quote'}
-                </button>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-gray-400">
+                    Your name <span className="text-gray-600">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={update('name')}
+                    placeholder="e.g. Alex Chen"
+                    required
+                    className="w-full rounded-xl border border-white/[0.08] bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#121212] focus:outline-none"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-gray-400">
+                    Email address <span className="text-gray-600">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={update('email')}
+                    placeholder="alex@company.com"
+                    required
+                    className="w-full rounded-xl border border-white/[0.08] bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#121212] focus:outline-none"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-gray-400">
+                    Project scope
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={form.type}
+                      onChange={update('type')}
+                      className="w-full appearance-none rounded-xl border border-white/[0.08] bg-[#0e0e0e] px-4 py-3 pr-10 text-sm text-white transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#121212] focus:outline-none cursor-pointer"
+                    >
+                      {SERVICE_OPTIONS.map((option) => (
+                        <option key={option} value={option} className="bg-[#111111] text-white py-1">
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-gray-500">
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-gray-400">
+                    Project details <span className="text-gray-600">*</span>
+                  </label>
+                  <textarea
+                    value={form.project}
+                    onChange={update('project')}
+                    placeholder="Describe your goals, timeline, and budget range..."
+                    required
+                    rows={4}
+                    className="w-full resize-none rounded-xl border border-white/[0.08] bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#121212] focus:outline-none leading-relaxed"
+                  />
+                </div>
+
+                <div className="pt-1">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-black transition-all duration-200 hover:bg-gray-100 hover:shadow-[0_0_24px_rgba(255,255,255,0.12)] active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                  >
+                    {loading ? (
+                      <span className="flex items-center gap-2">
+                        <svg className="h-4 w-4 animate-spin text-black" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      <>
+                        <span>Request a quote</span>
+                        <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                      </>
+                    )}
+                  </button>
+                  <p className="mt-2.5 text-center text-[11px] text-gray-500 font-mono">
+                    Fixed quote delivered within 1 business day
+                  </p>
+                </div>
               </form>
             )}
           </div>

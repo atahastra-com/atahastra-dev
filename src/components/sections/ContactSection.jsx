@@ -35,47 +35,87 @@ export default function ContactSection() {
 
           <div className="mt-10">
             {submitted ? (
-              <div className="rounded-xl border border-white/[0.1] bg-[#0c0c0c] p-6 text-center">
+              <div className="mx-auto max-w-md rounded-2xl border border-white/[0.08] bg-[#090909] p-8 text-center shadow-xl">
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
+                  <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
                 <p className="text-base font-semibold text-white">Request received.</p>
-                <p className="mt-1.5 text-sm text-gray-400">
-                  Thanks <span className="text-white">{form.name}</span>. We will reply to{' '}
-                  <span className="text-white font-mono">{form.email}</span> within one
-                  business day.
+                <p className="mt-2 text-sm text-gray-400 leading-relaxed">
+                  Thanks <span className="text-white font-medium">{form.name}</span>. We will reply to{' '}
+                  <span className="text-white font-mono text-xs">{form.email}</span> within one business day.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="mx-auto flex max-w-md flex-col gap-3">
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={update('name')}
-                  placeholder="Your name"
-                  required
-                  className="flex-1 rounded-full border border-white/[0.14] bg-[#0c0c0c] px-5 py-3 text-sm text-white placeholder-gray-500 focus:border-white focus:outline-none transition-colors"
-                />
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={update('email')}
-                  placeholder="Enter your email address"
-                  required
-                  className="flex-1 rounded-full border border-white/[0.14] bg-[#0c0c0c] px-5 py-3 text-sm text-white placeholder-gray-500 focus:border-white focus:outline-none transition-colors"
-                />
-                <textarea
-                  value={form.project}
-                  onChange={update('project')}
-                  placeholder="What do you want to build? (e.g. Shopify store, business website, mobile app)"
-                  required
-                  rows={4}
-                  className="rounded-2xl border border-white/[0.14] bg-[#0c0c0c] px-5 py-3 text-sm text-white placeholder-gray-500 focus:border-white focus:outline-none transition-colors"
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="minimal-button-primary rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap active:scale-95 disabled:opacity-50"
-                >
-                  {loading ? 'Sending...' : 'Request a quote'}
-                </button>
+              <form onSubmit={handleSubmit} className="mx-auto flex max-w-md flex-col gap-4 text-left">
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-gray-400">
+                    Your name <span className="text-gray-600">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={update('name')}
+                    placeholder="e.g. Alex Chen"
+                    required
+                    className="w-full rounded-xl border border-white/[0.08] bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#121212] focus:outline-none"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-gray-400">
+                    Email address <span className="text-gray-600">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={update('email')}
+                    placeholder="alex@company.com"
+                    required
+                    className="w-full rounded-xl border border-white/[0.08] bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#121212] focus:outline-none"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-gray-400">
+                    Project details <span className="text-gray-600">*</span>
+                  </label>
+                  <textarea
+                    value={form.project}
+                    onChange={update('project')}
+                    placeholder="What are you looking to build, scale, or redesign?"
+                    required
+                    rows={4}
+                    className="w-full resize-none rounded-xl border border-white/[0.08] bg-[#0e0e0e] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#121212] focus:outline-none leading-relaxed"
+                  />
+                </div>
+
+                <div className="pt-1">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="group relative flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-black transition-all duration-200 hover:bg-gray-100 hover:shadow-[0_0_24px_rgba(255,255,255,0.12)] active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                  >
+                    {loading ? (
+                      <span className="flex items-center gap-2">
+                        <svg className="h-4 w-4 animate-spin text-black" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      <>
+                        <span>Request a quote</span>
+                        <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                      </>
+                    )}
+                  </button>
+                  <p className="mt-2.5 text-center text-[11px] text-gray-500 font-mono">
+                    Fixed quote delivered within 1 business day
+                  </p>
+                </div>
               </form>
             )}
           </div>
