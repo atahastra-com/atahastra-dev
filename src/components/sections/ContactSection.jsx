@@ -1,21 +1,10 @@
 import { useState } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 import { CAL_BOOKING_URL } from '../../data/contact'
 
 export default function ContactSection() {
+  const [formState, handleSubmit] = useForm('mdeargpg')
   const [form, setForm] = useState({ name: '', email: '', project: '' })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!form.email.includes('@') || !form.name.trim() || !form.project.trim()) return
-
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 500)
-  }
 
   const update = (key) => (e) => setForm((prev) => ({ ...prev, [key]: e.target.value }))
 
@@ -49,7 +38,7 @@ export default function ContactSection() {
           </ul>
 
           <div className="mt-10">
-            {submitted ? (
+            {formState.succeeded ? (
               <div className="mx-auto max-w-md rounded-2xl border border-white/[0.08] bg-black p-8 text-center shadow-2xl">
                 <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
                   <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,6 +59,7 @@ export default function ContactSection() {
                   </label>
                   <input
                     id="cta-name"
+                    name="name"
                     type="text"
                     value={form.name}
                     onChange={update('name')}
@@ -77,6 +67,7 @@ export default function ContactSection() {
                     required
                     className="w-full rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none"
                   />
+                  <ValidationError field="name" errors={formState.errors} />
                 </div>
 
                 <div className="space-y-1.5">
@@ -85,6 +76,7 @@ export default function ContactSection() {
                   </label>
                   <input
                     id="cta-email"
+                    name="email"
                     type="email"
                     value={form.email}
                     onChange={update('email')}
@@ -92,6 +84,7 @@ export default function ContactSection() {
                     required
                     className="w-full rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none"
                   />
+                  <ValidationError field="email" errors={formState.errors} />
                 </div>
 
                 <div className="space-y-1.5">
@@ -100,6 +93,7 @@ export default function ContactSection() {
                   </label>
                   <textarea
                     id="cta-project"
+                    name="project"
                     value={form.project}
                     onChange={update('project')}
                     placeholder="What are you looking to build, scale, or redesign?"
@@ -107,15 +101,16 @@ export default function ContactSection() {
                     rows={4}
                     className="w-full resize-none rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none leading-relaxed"
                   />
+                  <ValidationError field="project" errors={formState.errors} />
                 </div>
 
                 <div className="pt-1">
                   <button
                     type="submit"
-                    disabled={loading}
+                    disabled={formState.submitting}
                     className="group relative flex w-full items-center justify-center gap-2 rounded-xl border border-white/[0.14] bg-[#121212] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:border-white/30 hover:bg-[#1a1a1a] hover:shadow-[0_0_24px_rgba(255,255,255,0.06)] active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                   >
-                    {loading ? (
+                    {formState.submitting ? (
                       <span className="flex items-center gap-2">
                         <svg className="h-4 w-4 animate-spin text-white" viewBox="0 0 24 24" fill="none">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
