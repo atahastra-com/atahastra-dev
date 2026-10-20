@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import Logo from '../ui/Logo'
 import SocialLinks from '../ui/SocialLinks'
-import { CONTACT_EMAIL } from '../../data/contact'
+import { CONTACT_EMAIL, CAL_BOOKING_URL } from '../../data/contact'
 
 const companyLinks = [
   { label: 'About', to: '/about' },
   { label: 'Careers', to: '/careers' },
   { label: 'Contact', to: '/contact' },
+  { label: 'Book 30-min call', href: CAL_BOOKING_URL, external: true },
 ]
 
 const serviceLinks = [
@@ -29,9 +30,18 @@ export default function Footer() {
               Atahastra is a design and development agency building websites,
               mobile apps, Shopify stores, web apps, and UI.
             </p>
-            <p className="mt-3 text-xs text-gray-500 font-mono">
+            <p className="mt-3 text-xs text-gray-500 font-mono flex flex-wrap items-center gap-x-2 gap-y-1">
               <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
                 {CONTACT_EMAIL}
+              </a>
+              <span>·</span>
+              <a
+                href={CAL_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                Schedule call ↗
               </a>
             </p>
           </div>
@@ -58,15 +68,27 @@ export default function Footer() {
                 Company
               </p>
               <nav className="mt-4 flex flex-col gap-2.5">
-                {companyLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    to={link.to}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {companyLinks.map((link) =>
+                  link.external ? (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1"
+                    >
+                      {link.label} ↗
+                    </a>
+                  ) : (
+                    <Link
+                      key={link.label}
+                      to={link.to}
+                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
               </nav>
             </div>
           </div>

@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SocialLinks from '../components/ui/SocialLinks'
 import Reveal from '../components/ui/Reveal'
-import { CONTACT_EMAIL } from '../data/contact'
+import { CONTACT_EMAIL, CAL_BOOKING_URL } from '../data/contact'
 import useSeo from '../hooks/useSeo'
 
 const SERVICE_OPTIONS = [
@@ -61,6 +62,15 @@ export default function Contact() {
               Prefer email? Write directly to{' '}
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-white font-mono hover:underline">
                 {CONTACT_EMAIL}
+              </a>
+              . Confused about what you need or where to start?{' '}
+              <a
+                href={CAL_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white underline underline-offset-4 hover:text-gray-300 transition-colors"
+              >
+                Schedule a 30-min discovery call
               </a>
               .
             </p>
@@ -177,6 +187,19 @@ export default function Contact() {
                   <p className="mt-2.5 text-center text-[11px] text-gray-500 font-mono">
                     Fixed quote delivered within 1 business day
                   </p>
+
+                  <div className="mt-4 flex flex-col items-center justify-center gap-1.5 border-t border-white/[0.06] pt-4 text-center">
+                    <span className="text-xs text-gray-400">Confused about what you need?</span>
+                    <a
+                      href={CAL_BOOKING_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-medium text-white hover:underline inline-flex items-center gap-1 transition-colors"
+                    >
+                      <span>Book a free 30-min consultation on Cal.com</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
                 </div>
               </form>
             )}
@@ -198,6 +221,27 @@ export default function Contact() {
                 Landing pages in 1–2 weeks. Business websites in 2–4 weeks. Shopify
                 stores in 2–5 weeks. Apps and web apps in 4–8+ weeks.
               </p>
+              <p className="mt-4">
+                <Link to="/services" className="text-sm text-white hover:underline">
+                  Browse all services →
+                </Link>
+              </p>
+            </div>
+            <div className="mt-8 border-t border-white/[0.08] pt-8">
+              <span className="font-mono text-xs text-gray-500">03</span>
+              <h3 className="mt-2 text-base font-semibold text-white">Confused about where to start?</h3>
+              <p className="mt-2 text-sm text-gray-400 leading-relaxed">
+                Not sure what tech stack or scope fits your idea? Book a free 30-minute discovery call with our team to clear up confusion before taking on a project.
+              </p>
+              <a
+                href={CAL_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/[0.12] bg-[#0c0c0c] px-4 py-2.5 text-xs font-semibold text-white hover:border-white/30 hover:bg-[#141414] transition-all"
+              >
+                <span>Schedule 30-min call on Cal.com</span>
+                <span>↗</span>
+              </a>
             </div>
             <div className="mt-8">
               <SocialLinks />

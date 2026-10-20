@@ -42,24 +42,21 @@ export default function About() {
               <span className="font-mono text-xs text-gray-500">01</span>
               <h3 className="mt-2 text-base font-semibold text-white">Clarity first</h3>
               <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                Fixed scope, fixed price, and a staging link before you pay the final
-                amount. No jargon, no surprise invoices.
+                Fixed scope, fixed price. No jargon, no surprise invoices.
               </p>
             </div>
             <div>
               <span className="font-mono text-xs text-gray-500">02</span>
               <h3 className="mt-2 text-base font-semibold text-white">Built to convert</h3>
               <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                Every page and screen has a clear job: calls, enquiries, checkouts, or
-                bookings. Design serves that goal.
+                Every page has a job: calls, enquiries, checkouts, or bookings.
               </p>
             </div>
             <div>
               <span className="font-mono text-xs text-gray-500">03</span>
               <h3 className="mt-2 text-base font-semibold text-white">Support after launch</h3>
               <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                Launch is the middle, not the end. We stay on for fixes, speed,
-                SEO, and steady improvements.
+                We stay on after launch for fixes, speed, and improvements.
               </p>
             </div>
           </div>

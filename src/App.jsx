@@ -8,6 +8,7 @@ const Services = lazy(() => import('./pages/Services'))
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Careers = lazy(() => import('./pages/Careers'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Suspense>

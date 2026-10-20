@@ -57,9 +57,8 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
-              We design and build websites, mobile apps, Shopify stores,
-              custom web apps, and clean UI with fixed quotes, fast delivery, and
-              support after launch.
+              Websites, mobile apps, Shopify stores, and clean UI.
+              Fixed quotes, fast delivery, support after launch.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -154,23 +153,6 @@ export default function Home() {
       </section>
 
       {/* ========================================================
-          AGENCY NOTE
-         ======================================================== */}
-      <section className="py-24 border-t border-white/[0.08] bg-[#050505]">
-        <div className="section-container">
-          <div className="mx-auto max-w-2xl text-center">
-            <blockquote className="text-2xl sm:text-3xl font-light italic leading-relaxed text-gray-200">
-              "A good website should pay for itself, bringing enquiries, sales, and
-              trust while you focus on running the business."
-            </blockquote>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-              Atahastra Studio
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
           FAQ
          ======================================================== */}
       <section className="py-24 border-t border-white/[0.08] bg-black">
@@ -187,24 +169,16 @@ export default function Home() {
           <div className="mx-auto mt-12 max-w-2xl">
             {[
               {
-                q: 'How much will my project cost?',
-                a: 'Every project gets a fixed quote before we start. No hourly billing, no surprise invoices. Tell us what you want to build and we reply within one business day.',
+                q: 'How much will it cost?',
+                a: 'A fixed quote before we start. No hourly billing, no surprises.',
               },
               {
                 q: 'How long does it take?',
-                a: 'Landing pages take 1–2 weeks, business websites 2–4 weeks, Shopify stores 2–5 weeks, and apps or custom web apps 4–8+ weeks depending on scope.',
-              },
-              {
-                q: 'Can you redesign my existing website or store?',
-                a: 'Yes. We start with a quick audit of speed, SEO, and usability, then rebuild what is holding you back while keeping the content and rankings that already work.',
-              },
-              {
-                q: 'Will I be able to update things myself?',
-                a: 'Yes. You get an easy-to-edit CMS where it makes sense, plus handover docs and credentials, so routine updates never need a developer.',
+                a: 'Most websites ship in 2 to 4 weeks. Apps and complex builds take longer.',
               },
               {
                 q: 'What happens after launch?',
-                a: 'We check speed and SEO basics at launch, then stay on with care plans covering updates, backups, fixes, and steady monthly improvements.',
+                a: 'We hand over everything and stay on for updates and support.',
               },
             ].map((item) => (
               <div key={item.q} className="border-t border-white/[0.08] py-6 last:border-b">

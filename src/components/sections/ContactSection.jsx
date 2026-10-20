@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { CAL_BOOKING_URL } from '../../data/contact'
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', project: '' })
@@ -115,6 +116,19 @@ export default function ContactSection() {
                   <p className="mt-2.5 text-center text-[11px] text-gray-500 font-mono">
                     Fixed quote delivered within 1 business day
                   </p>
+
+                  <div className="mt-4 flex flex-col items-center justify-center gap-1.5 border-t border-white/[0.06] pt-4 text-center">
+                    <span className="text-xs text-gray-400">Confused about what you need?</span>
+                    <a
+                      href={CAL_BOOKING_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-medium text-white hover:underline inline-flex items-center gap-1 transition-colors"
+                    >
+                      <span>Book a free 30-min consultation on Cal.com</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
                 </div>
               </form>
             )}
