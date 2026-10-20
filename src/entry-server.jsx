@@ -3,7 +3,7 @@ import { prerender } from 'react-dom/static'
 import { StaticRouter } from 'react-router-dom'
 import AppRoutes from './AppRoutes'
 
-export { PAGE_SEO, SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from './data/seo'
+export { PAGE_SEO, serviceSeo, SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from './data/seo'
 export { faqs } from './data/faq'
 export { services } from './data/services'
 export { CONTACT_EMAIL, CAL_BOOKING_URL } from './data/contact'

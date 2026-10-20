@@ -29,38 +29,53 @@ export default function Careers() {
           </div>
         </Reveal>
 
-        <div className="mt-16 max-w-2xl border-t border-white/[0.08] pt-12">
-          <h2 className="text-xl font-semibold text-white">Open Inquiries</h2>
-          <p className="mt-3 text-base leading-relaxed text-gray-400">
-            We hire project by project for web developers, mobile developers,
-            Shopify specialists, and UI designers. If you do strong work, send your
-            portfolio and a short note to{' '}
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="text-white font-mono hover:underline"
-            >
-              {CONTACT_EMAIL}
-            </a>
-            .
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              to="/services"
-              className="minimal-button-secondary rounded-full px-7 py-3 text-sm font-medium"
-            >
-              See our work
-            </Link>
-            <Link
-              to="/contact"
-              className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold"
-            >
-              Start a project
-            </Link>
+        <div className="mt-16 grid max-w-3xl gap-10 border-t border-white/[0.08] pt-12 md:grid-cols-2">
+          <div>
+            <h2 className="text-xl font-semibold text-white">What we look for</h2>
+            <p className="mt-3 text-base leading-relaxed text-gray-400">
+              Clean builds, clear communication, and ownership from first commit
+              to launch. You should be comfortable working directly with clients
+              on websites, mobile apps, Shopify stores, and product UI.
+            </p>
+            <ul className="mt-5 space-y-2 text-sm leading-relaxed text-gray-400">
+              <li>· Web developers: React, responsive builds, and page speed</li>
+              <li>· Mobile developers: React Native and store releases</li>
+              <li>· Shopify specialists: themes, migrations, and conversion</li>
+              <li>· UI designers: flows, Figma systems, and prototypes</li>
+            </ul>
           </div>
+          <div>
+            <h2 className="text-xl font-semibold text-white">Open inquiries</h2>
+            <p className="mt-3 text-base leading-relaxed text-gray-400">
+              We hire project by project. If you do strong work, send your
+              portfolio, your role, and a short note about one shipped project to{' '}
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="text-white font-mono hover:underline"
+              >
+                {CONTACT_EMAIL}
+              </a>
+              .
+            </p>
 
-          <div className="mt-10">
-            <SocialLinks />
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                to="/services"
+                className="minimal-button-secondary rounded-full px-7 py-3 text-sm font-medium"
+              >
+                See our work
+              </Link>
+              <Link
+                to="/contact"
+                className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold"
+              >
+                Start a project
+              </Link>
+            </div>
+
+            <div className="mt-10">
+              <SocialLinks />
+            </div>
           </div>
         </div>
       </div>

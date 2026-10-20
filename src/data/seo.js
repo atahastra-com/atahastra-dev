@@ -8,13 +8,13 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/hero.png`
 export const PAGE_SEO = {
   home: {
     path: '/',
-    title: 'Atahastra | Web, Mobile App, Shopify & UI/UX Development Agency',
+    title: 'Atahastra | Websites, Mobile Apps, Shopify & UI/UX Agency',
     description:
       'Atahastra designs and builds websites, mobile apps, Shopify stores, custom web apps, and UI/UX. Fixed quotes, fast delivery, and support after launch.',
   },
   services: {
     path: '/services',
-    title: 'Services | Websites, Mobile Apps, Shopify & Web Apps | Atahastra',
+    title: 'Services | Websites, Mobile Apps & Shopify | Atahastra',
     description:
       'Website design and development, iOS and Android apps, Shopify ecommerce, custom web applications, UI/UX design, and ongoing care and growth plans.',
   },
@@ -44,3 +44,14 @@ export const PAGE_SEO = {
     noindex: true,
   },
 }
+
+export const serviceSeo = Object.fromEntries(
+  [
+    ['website-design-development', 'Website Design & Development', 'Website design and development for businesses that need a clear, fast, conversion-focused website.'],
+    ['mobile-apps', 'Mobile App Development', 'Mobile app design and development for iOS and Android, from product flow to launch.'],
+    ['shopify-ecommerce', 'Shopify & Ecommerce Development', 'Shopify ecommerce design and development for stores that make it easier to discover and buy products.'],
+    ['web-apps', 'Custom Web Application Development', 'Custom web application development for portals, dashboards, booking systems, and business workflows.'],
+    ['ui-ux-design', 'UI/UX Design', 'UI and UX design for digital products, websites, and web applications that are clear and easy to use.'],
+    ['care-growth', 'Website Care & Growth', 'Ongoing website care, performance improvements, technical SEO, and conversion-focused updates.'],
+  ].map(([slug, name, description]) => [slug, { path: `/services/${slug}`, title: `${name} | Atahastra`, description }]),
+)

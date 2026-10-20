@@ -107,10 +107,10 @@ export default function Home() {
                   </p>
                 </div>
                 <Link
-                  to="/services"
+                  to={`/services/${service.slug}`}
                   className="mt-6 text-sm font-medium text-white hover:underline"
                 >
-                  Learn more →
+                  Explore {service.title} →
                 </Link>
               </div>
             ))}

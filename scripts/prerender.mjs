@@ -22,6 +22,7 @@ const {
   SITE_NAME,
   faqs,
   services,
+  serviceSeo,
   CONTACT_EMAIL,
 } = await import(pathToFileURL(ssrEntry).href)
 
@@ -31,6 +32,12 @@ const ROUTES = [
   { key: 'about', url: '/about', file: 'about.html' },
   { key: 'contact', url: '/contact', file: 'contact.html' },
   { key: 'careers', url: '/careers', file: 'careers.html' },
+  ...Object.entries(serviceSeo).map(([slug, seo]) => ({
+    key: `service:${slug}`,
+    url: seo.path,
+    file: `services/${slug}.html`,
+    seo,
+  })),
   // Any unmatched URL renders the catch-all NotFound route.
   { key: 'notFound', url: '/__not-found__', file: '404.html' },
 ]
@@ -91,10 +98,36 @@ function structuredData(key, seo) {
           name: s.title,
           description: s.short,
           provider: { '@id': `${SITE_URL}/#organization` },
-          url,
+          url: `${SITE_URL}/services/${s.slug}`,
         },
       })),
     })
+  }
+
+  if (key.startsWith('service:')) {
+    const slug = key.slice('service:'.length)
+    const service = services.find((item) => item.slug === slug)
+    if (service) {
+      blocks.push({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: service.title,
+        description: service.description,
+        url,
+        provider: { '@id': `${SITE_URL}/#organization` },
+      })
+      if (Array.isArray(service.faqs) && service.faqs.length > 0) {
+        blocks.push({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: service.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        })
+      }
+    }
   }
 
   if (key === 'contact') {
@@ -156,29 +189,32 @@ if (!template.includes('<div id="root"></div>')) {
 }
 
 for (const route of ROUTES) {
-  const seo = PAGE_SEO[route.key]
+  const seo = route.seo ?? PAGE_SEO[route.key]
   const appHtml = await render(route.url)
   const html = applyHead(template, route.key, seo).replace(
     '<div id="root"></div>',
     `<div id="root">${appHtml}</div>`,
   )
-  await fs.writeFile(path.join(distDir, route.file), html)
+  const outputPath = path.join(distDir, route.file)
+  await fs.mkdir(path.dirname(outputPath), { recursive: true })
+  await fs.writeFile(outputPath, html)
   console.log(`prerendered ${route.url.padEnd(16)} -> dist/${route.file}`)
 }
 
 // Keep sitemap lastmod current on every build.
 const today = new Date().toISOString().slice(0, 10)
-const sitemapPages = ROUTES.filter((r) => !PAGE_SEO[r.key].noindex)
-const priorities = { home: '1.0', services: '0.9', contact: '0.9', about: '0.7', careers: '0.5' }
+const sitemapPages = ROUTES.filter((r) => !(r.seo ?? PAGE_SEO[r.key]).noindex)
+const priorities = { home: '1.0', services: '0.9', contact: '0.9', about: '0.7', careers: '0.5', service: '0.7' }
+const priorityFor = (key) => priorities[key] ?? (key.startsWith('service:') ? priorities.service : '0.5')
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapPages
   .map(
     (r) => `  <url>
-    <loc>${pageUrl(PAGE_SEO[r.key])}</loc>
+    <loc>${pageUrl(r.seo ?? PAGE_SEO[r.key])}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${r.key === 'home' ? 'weekly' : 'monthly'}</changefreq>
-    <priority>${priorities[r.key] ?? '0.5'}</priority>
+    <priority>${priorityFor(r.key)}</priority>
   </url>`,
   )
   .join('\n')}

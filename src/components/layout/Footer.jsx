@@ -11,10 +11,10 @@ const companyLinks = [
 ]
 
 const serviceLinks = [
-  { label: 'Custom web apps & AI', to: '/services' },
-  { label: 'Mobile engineering', to: '/services' },
-  { label: 'Shopify & ecommerce', to: '/services' },
-  { label: 'Performance websites', to: '/services' },
+  { label: 'Custom web apps', to: '/services/web-apps' },
+  { label: 'Mobile app development', to: '/services/mobile-apps' },
+  { label: 'Shopify & ecommerce', to: '/services/shopify-ecommerce' },
+  { label: 'Website development', to: '/services/website-design-development' },
 ]
 
 export default function Footer() {

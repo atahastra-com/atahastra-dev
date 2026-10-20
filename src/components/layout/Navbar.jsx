@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from '../ui/Logo'
 
@@ -12,10 +12,6 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { pathname } = useLocation()
-
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
 
   const linkClass = (to) => {
     const isActive = pathname === to

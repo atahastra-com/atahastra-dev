@@ -30,6 +30,9 @@ export default function Logo({ className = "", showText = true, size = "md" }) {
         <img
           src="/logo.png"
           alt="Atahastra"
+          width="40"
+          height="40"
+          decoding="async"
           className={`${sizes[size]} shrink-0 object-contain`}
         />
       </div>
@@ -45,6 +48,10 @@ export default function Logo({ className = "", showText = true, size = "md" }) {
       <img
         src="/logo.png"
         alt="Atahastra"
+        width="40"
+        height="40"
+        decoding="async"
+        fetchPriority="high"
         className={`${sizes[size]} shrink-0 object-contain`}
       />
       <span className="text-sm font-bold tracking-[0.22em] text-white">
