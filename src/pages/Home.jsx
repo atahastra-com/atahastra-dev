@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom'
 import ContactSection from '../components/sections/ContactSection'
 import { services, processSteps } from '../data/services'
+import { faqs } from '../data/faq'
 import useSeo from '../hooks/useSeo'
+import { PAGE_SEO } from '../data/seo'
 
 export default function Home() {
-  useSeo({
-    title: 'Atahastra | Web, Mobile Apps, Shopify & UI Agency',
-    description:
-      'Atahastra is a web and app agency. We build websites, mobile apps, Shopify stores, custom web apps, and UI/UX design.',
-    path: '/',
-  })
+  useSeo(PAGE_SEO.home)
 
   return (
     <div className="bg-black text-white">
@@ -167,20 +164,7 @@ export default function Home() {
           </div>
 
           <div className="mx-auto mt-12 max-w-2xl">
-            {[
-              {
-                q: 'How much will it cost?',
-                a: 'A fixed quote before we start. No hourly billing, no surprises.',
-              },
-              {
-                q: 'How long does it take?',
-                a: 'Most websites ship in 2 to 4 weeks. Apps and complex builds take longer.',
-              },
-              {
-                q: 'What happens after launch?',
-                a: 'We hand over everything and stay on for updates and support.',
-              },
-            ].map((item) => (
+            {faqs.map((item) => (
               <div key={item.q} className="border-t border-white/[0.08] py-6 last:border-b">
                 <h3 className="text-base font-semibold text-white">{item.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-gray-400">{item.a}</p>

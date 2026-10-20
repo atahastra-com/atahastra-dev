@@ -4,43 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Primary Meta Tags -->
-    <title>Atahastra | Web, Mobile Apps, Shopify & UI Agency</title>
+    <!-- Primary Meta Tags (title/description/canonical are rewritten per page by scripts/prerender.mjs) -->
+    <title>Atahastra | Web, Mobile App, Shopify &amp; UI/UX Development Agency</title>
     <meta
       name="description"
-      content="Atahastra is a design and development agency. We build full-stack websites, mobile apps, Shopify stores, custom web apps, and UI/UX design."
-    />
-    <meta
-      name="keywords"
-      content="Atahastra, web development agency, mobile app development, Shopify development, web apps, UI UX design"
+      content="Atahastra designs and builds websites, mobile apps, Shopify stores, custom web apps, and UI/UX. Fixed quotes, fast delivery, and support after launch."
     />
     <meta name="author" content="Atahastra" />
     <meta
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
-    <meta name="theme-color" content="#000000" id="theme-color" />
-    <link rel="canonical" href="https://atahastra.com/" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href="https://www.atahastra.com/" />
 
     <!-- Icons -->
-    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
+    <link rel="icon" type="image/png" sizes="1024x1024" href="/favicon.png?v=2" />
     <link rel="apple-touch-icon" href="/favicon.png?v=2" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Atahastra" />
-    <meta property="og:url" content="https://atahastra.com/" />
+    <meta property="og:url" content="https://www.atahastra.com/" />
     <meta
       property="og:title"
-      content="Atahastra | Web, Mobile Apps, Shopify & UI Agency"
+      content="Atahastra | Web, Mobile App, Shopify &amp; UI/UX Development Agency"
     />
     <meta
       property="og:description"
-      content="Atahastra is a design and development agency. We build full-stack websites, mobile apps, Shopify stores, custom web apps, and UI/UX design."
+      content="Atahastra designs and builds websites, mobile apps, Shopify stores, custom web apps, and UI/UX. Fixed quotes, fast delivery, and support after launch."
     />
     <meta property="og:image" content="https://atahastra.com/hero.png" />
-    <meta property="og:image:alt" content="Atahastra Agency" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="576" />
+    <meta property="og:image:alt" content="Atahastra, design and development agency" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X -->
@@ -48,13 +49,14 @@
     <meta name="twitter:site" content="@atahastra" />
     <meta
       name="twitter:title"
-      content="Atahastra | Web, Mobile Apps, Shopify & UI Agency"
+      content="Atahastra | Web, Mobile App, Shopify &amp; UI/UX Development Agency"
     />
     <meta
       name="twitter:description"
-      content="Design and development agency building websites, mobile apps, Shopify stores, web apps, and UI."
+      content="Atahastra designs and builds websites, mobile apps, Shopify stores, custom web apps, and UI/UX. Fixed quotes, fast delivery, and support after launch."
     />
     <meta name="twitter:image" content="https://atahastra.com/hero.png" />
+    <meta name="twitter:image:alt" content="Atahastra, design and development agency" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,80 +66,58 @@
       rel="stylesheet"
     />
 
-    <!-- Structured Data: Organization -->
+    <!-- Structured Data: Organization + WebSite (site-wide). Page-specific schema is added at build time. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Atahastra",
-        "url": "https://atahastra.com",
-        "logo": "https://atahastra.com/logo.png",
-        "image": "https://atahastra.com/hero.png",
-        "description": "Atahastra is a design and development agency building websites, mobile apps, Shopify stores, web apps, and UI.",
-        "email": "contact@atahastra.com",
-        "foundingDate": "2024",
-        "knowsAbout": [
-          "Web Development",
-          "Mobile App Development",
-          "Shopify Development",
-          "Web Applications",
-          "UI UX Design"
-        ],
-        "sameAs": [
-          "https://www.linkedin.com/company/atahastra/",
-          "https://x.com/atahastra",
-          "https://www.instagram.com/atahastra/"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "customer support",
-          "email": "contact@atahastra.com",
-          "availableLanguage": ["English"]
-        }
-      }
-    </script>
-
-    <!-- Structured Data: FAQ (matches homepage FAQ) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
+        "@graph": [
           {
-            "@type": "Question",
-            "name": "How much will it cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A fixed quote before we start. No hourly billing, no surprises."
+            "@type": "Organization",
+            "@id": "https://atahastra.com/#organization",
+            "name": "Atahastra",
+            "url": "https://atahastra.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://atahastra.com/logo.png",
+              "width": 1024,
+              "height": 1024
+            },
+            "image": "https://atahastra.com/hero.png",
+            "description": "Atahastra is a design and development agency building websites, mobile apps, Shopify stores, custom web apps, and UI/UX.",
+            "email": "admin@atahastra.com",
+            "foundingDate": "2024",
+            "knowsAbout": [
+              "Website Design and Development",
+              "Mobile App Development",
+              "React Native",
+              "Shopify Development",
+              "Ecommerce",
+              "Web Application Development",
+              "UI/UX Design",
+              "Technical SEO"
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/company/atahastra/",
+              "https://x.com/atahastra",
+              "https://www.instagram.com/atahastra/"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "admin@atahastra.com",
+              "url": "https://cal.com/atahastra/30min",
+              "availableLanguage": ["English"]
             }
           },
           {
-            "@type": "Question",
-            "name": "How long does it take?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Most websites ship in 2 to 4 weeks. Apps and complex builds take longer."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What happens after launch?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We hand over everything and stay on for updates and support."
-            }
+            "@type": "WebSite",
+            "@id": "https://atahastra.com/#website",
+            "name": "Atahastra",
+            "url": "https://atahastra.com/",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://atahastra.com/#organization" }
           }
         ]
-      }
-    </script>
-
-    <!-- Structured Data: WebSite -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Atahastra",
-        "url": "https://atahastra.com"
       }
     </script>
   </head>

@@ -3,13 +3,10 @@ import SocialLinks from '../components/ui/SocialLinks'
 import Reveal from '../components/ui/Reveal'
 import { CONTACT_EMAIL } from '../data/contact'
 import useSeo from '../hooks/useSeo'
+import { PAGE_SEO } from '../data/seo'
 
 export default function Careers() {
-  useSeo({
-    title: 'Careers | Atahastra Agency',
-    description: 'Work with Atahastra on client websites, apps, Shopify stores, and UI.',
-    path: '/careers',
-  })
+  useSeo(PAGE_SEO.careers)
 
   return (
     <div className="bg-black text-white min-h-[75vh]">

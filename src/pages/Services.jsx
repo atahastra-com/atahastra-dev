@@ -2,14 +2,10 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/ui/Reveal'
 import { services } from '../data/services'
 import useSeo from '../hooks/useSeo'
+import { PAGE_SEO } from '../data/seo'
 
 export default function Services() {
-  useSeo({
-    title: 'Services | Atahastra Agency',
-    description:
-      'Websites, mobile apps, Shopify stores, web apps, UI design, and care plans from Atahastra.',
-    path: '/services',
-  })
+  useSeo(PAGE_SEO.services)
 
   return (
     <div className="bg-black text-white min-h-[75vh]">

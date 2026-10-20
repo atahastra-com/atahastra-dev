@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/ui/Reveal'
 import useSeo from '../hooks/useSeo'
+import { PAGE_SEO } from '../data/seo'
 
 export default function NotFound() {
-  useSeo({
-    title: 'Page not found | Atahastra Agency',
-    description: 'The page you are looking for does not exist. Explore our services or start a project with Atahastra.',
-    path: '/404',
-  })
+  useSeo(PAGE_SEO.notFound)
 
   return (
     <div className="bg-black text-white min-h-[75vh]">

@@ -1,17 +1,25 @@
 {
   "name": "Atahastra",
   "short_name": "Atahastra",
-  "description": "Atahastra. Websites, mobile apps, Shopify stores, web apps, and UI design.",
+  "description": "Atahastra designs and builds websites, mobile apps, Shopify stores, custom web apps, and UI/UX.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
+  "lang": "en",
   "icons": [
     {
       "src": "/favicon.png",
-      "sizes": "512x512",
+      "sizes": "1024x1024",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

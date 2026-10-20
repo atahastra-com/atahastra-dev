@@ -1,9 +1,7 @@
 import { useEffect } from "react";
+import { SITE_URL, PAGE_SEO } from "../data/seo";
 
-const BASE_URL = "https://atahastra.com";
-const DEFAULT_TITLE = "Atahastra | Web, Mobile Apps, Shopify & UI Agency";
-const DEFAULT_DESCRIPTION =
-  "Atahastra is a design and development agency. We build websites, mobile apps, Shopify stores, custom web apps, and UI/UX design.";
+const DEFAULTS = PAGE_SEO.home;
 
 function setMeta(attr, key, content) {
   if (!content) return;
@@ -26,20 +24,31 @@ function setCanonical(href) {
   el.setAttribute("href", href);
 }
 
-export default function useSeo({ title, description, path = "/" } = {}) {
+/**
+ * Keeps <head> metadata in sync during client-side navigation.
+ * Initial HTML for every route is prerendered at build time with the same values.
+ */
+export default function useSeo({ title, description, path = "/", noindex = false } = {}) {
   useEffect(() => {
-    const resolvedTitle = title || DEFAULT_TITLE;
-    const resolvedDescription = description || DEFAULT_DESCRIPTION;
-    const url = `${BASE_URL}${path}`;
+    const resolvedTitle = title || DEFAULTS.title;
+    const resolvedDescription = description || DEFAULTS.description;
+    const url = `${SITE_URL}${path === "/" ? "/" : path}`;
 
     document.title = resolvedTitle;
 
     setMeta("name", "description", resolvedDescription);
+    setMeta(
+      "name",
+      "robots",
+      noindex
+        ? "noindex, follow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    );
     setMeta("property", "og:title", resolvedTitle);
     setMeta("property", "og:description", resolvedDescription);
     setMeta("property", "og:url", url);
     setMeta("name", "twitter:title", resolvedTitle);
     setMeta("name", "twitter:description", resolvedDescription);
     setCanonical(url);
-  }, [title, description, path]);
+  }, [title, description, path, noindex]);
 }

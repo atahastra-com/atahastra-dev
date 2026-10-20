@@ -4,6 +4,7 @@ import SocialLinks from '../components/ui/SocialLinks'
 import Reveal from '../components/ui/Reveal'
 import { CONTACT_EMAIL, CAL_BOOKING_URL } from '../data/contact'
 import useSeo from '../hooks/useSeo'
+import { PAGE_SEO } from '../data/seo'
 
 const SERVICE_OPTIONS = [
   'Custom Web Applications & AI Workflows',
@@ -37,12 +38,7 @@ export default function Contact() {
     }, 500)
   }
 
-  useSeo({
-    title: 'Contact | Atahastra Agency',
-    description:
-      'Start a project with Atahastra. Websites, mobile apps, Shopify stores, web apps, and UI design with fixed quotes within one business day.',
-    path: '/contact',
-  })
+  useSeo(PAGE_SEO.contact)
 
   return (
     <div className="bg-black text-white min-h-[75vh]">
