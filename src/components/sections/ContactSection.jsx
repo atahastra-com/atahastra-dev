@@ -65,10 +65,11 @@ export default function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit} className="mx-auto flex max-w-md flex-col gap-4 text-left">
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-gray-400">
+                  <label htmlFor="cta-name" className="block text-xs font-medium text-gray-400">
                     Your name <span className="text-gray-600">*</span>
                   </label>
                   <input
+                    id="cta-name"
                     type="text"
                     value={form.name}
                     onChange={update('name')}
@@ -79,10 +80,11 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-gray-400">
+                  <label htmlFor="cta-email" className="block text-xs font-medium text-gray-400">
                     Email address <span className="text-gray-600">*</span>
                   </label>
                   <input
+                    id="cta-email"
                     type="email"
                     value={form.email}
                     onChange={update('email')}
@@ -93,10 +95,11 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-gray-400">
+                  <label htmlFor="cta-project" className="block text-xs font-medium text-gray-400">
                     Project details <span className="text-gray-600">*</span>
                   </label>
                   <textarea
+                    id="cta-project"
                     value={form.project}
                     onChange={update('project')}
                     placeholder="What are you looking to build, scale, or redesign?"

@@ -48,7 +48,7 @@ export const services = [
     slug: 'shopify-ecommerce',
     title: 'Shopify & Ecommerce',
     short: 'High-converting Shopify stores, rebuilds, and migrations.',
-    description: 'We build and improve Shopify stores that make products easy to discover, compare, and buy—from focused storefronts to considered migrations and rebuilds.',
+    description: 'We build and improve Shopify stores that make products easy to discover, compare, and buy, from focused storefronts to considered migrations and rebuilds.',
     deliverables: ['Storefront UX and theme work', 'Product and collection structure', 'Migration planning', 'Conversion-focused improvements'],
     audience: 'Ideal for retailers and direct-to-consumer brands that need a Shopify store which loads fast, explains products clearly, and turns browsing into checkout.',
     projects: ['New Shopify storefronts', 'Theme rebuilds and redesigns', 'Platform migrations to Shopify', 'Product-page and checkout improvements'],

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SocialLinks from '../components/ui/SocialLinks'
 import Reveal from '../components/ui/Reveal'
-import Testimonials from '../components/sections/Testimonials'
 import { CONTACT_EMAIL, CAL_BOOKING_URL } from '../data/contact'
 import useSeo from '../hooks/useSeo'
 import { PAGE_SEO } from '../data/seo'
@@ -47,7 +46,7 @@ export default function Contact() {
         <Reveal>
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-500">
-              Contact
+              Get Started
             </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
               Get a fixed quote
@@ -95,10 +94,11 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-gray-400">
+                  <label htmlFor="contact-name" className="block text-xs font-medium text-gray-400">
                     Your name <span className="text-gray-600">*</span>
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     value={form.name}
                     onChange={update('name')}
@@ -109,10 +109,11 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-gray-400">
+                  <label htmlFor="contact-email" className="block text-xs font-medium text-gray-400">
                     Email address <span className="text-gray-600">*</span>
                   </label>
                   <input
+                    id="contact-email"
                     type="email"
                     value={form.email}
                     onChange={update('email')}
@@ -123,11 +124,12 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-gray-400">
+                  <label htmlFor="contact-type" className="block text-xs font-medium text-gray-400">
                     Project scope
                   </label>
                   <div className="relative">
                     <select
+                      id="contact-type"
                       value={form.type}
                       onChange={update('type')}
                       className="w-full appearance-none rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 pr-10 text-sm text-white transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none cursor-pointer"
@@ -147,10 +149,11 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-gray-400">
+                  <label htmlFor="contact-project" className="block text-xs font-medium text-gray-400">
                     Project details <span className="text-gray-600">*</span>
                   </label>
                   <textarea
+                    id="contact-project"
                     value={form.project}
                     onChange={update('project')}
                     placeholder="Describe your goals, timeline, and budget range..."
@@ -240,7 +243,6 @@ export default function Contact() {
                 <span>↗</span>
               </a>
             </div>
-            <Testimonials compact />
             <div className="mt-8">
               <SocialLinks />
             </div>

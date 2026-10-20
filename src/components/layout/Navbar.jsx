@@ -6,7 +6,6 @@ const navLinks = [
   { label: 'Services', to: '/services' },
   { label: 'About', to: '/about' },
   { label: 'Careers', to: '/careers' },
-  { label: 'Contact', to: '/contact' },
 ]
 
 export default function Navbar() {
@@ -38,7 +37,7 @@ export default function Navbar() {
               to="/contact"
               className="minimal-button-primary rounded-full px-4 py-1.5 text-xs font-semibold"
             >
-              Get a fixed quote
+              Get Started
             </Link>
           </nav>
 
@@ -91,7 +90,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="minimal-button-primary block w-full rounded-full py-3 text-center text-sm font-semibold"
             >
-              Get a fixed quote
+              Get Started
             </Link>
           </div>
         </div>

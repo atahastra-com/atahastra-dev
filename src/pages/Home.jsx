@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
-import ContactSection from '../components/sections/ContactSection'
 import SelectedWork from '../components/sections/SelectedWork'
 import Testimonials from '../components/sections/Testimonials'
-import { services, processSteps } from '../data/services'
+import { services } from '../data/services'
 import { faqs } from '../data/faq'
 import useSeo from '../hooks/useSeo'
 import { PAGE_SEO } from '../data/seo'
@@ -57,7 +56,7 @@ export default function Home() {
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
               Conversion-focused websites and Shopify stores for growing
-              businesses — plus mobile apps, web apps, and product UI.
+              businesses, plus mobile apps, web apps, and product UI.
               Fixed quotes, fast delivery, support after launch.
             </p>
 
@@ -127,37 +126,6 @@ export default function Home() {
       <SelectedWork />
 
       {/* ========================================================
-          PROCESS
-         ======================================================== */}
-      <section className="py-24 border-t border-white/[0.08] bg-black">
-        <div className="section-container">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-              How we work
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Simple process, no surprises
-            </h2>
-            <p className="mt-3 text-base text-gray-400">
-              You always know what happens next, what it costs, and when it ships.
-            </p>
-          </div>
-
-          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-4">
-            {processSteps.map((step) => (
-              <div key={step.number}>
-                <span className="font-mono text-xs text-gray-500">{step.number}</span>
-                <h3 className="mt-2 text-base font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
           TESTIMONIALS
          ======================================================== */}
       <Testimonials />
@@ -187,10 +155,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================================
-          CONTACT CTA
-         ======================================================== */}
-      <ContactSection />
     </div>
   )
 }
