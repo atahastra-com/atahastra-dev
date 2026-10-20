@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SocialLinks from '../components/ui/SocialLinks'
 import Reveal from '../components/ui/Reveal'
+import Testimonials from '../components/sections/Testimonials'
 import { CONTACT_EMAIL, CAL_BOOKING_URL } from '../data/contact'
 import useSeo from '../hooks/useSeo'
 import { PAGE_SEO } from '../data/seo'
@@ -49,7 +50,7 @@ export default function Contact() {
               Contact
             </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-              Start a project
+              Get a fixed quote
             </h1>
             <p className="mt-8 text-lg leading-relaxed text-gray-300 md:text-xl font-medium">
               Get a fixed quote within one business day.
@@ -239,6 +240,7 @@ export default function Contact() {
                 <span>↗</span>
               </a>
             </div>
+            <Testimonials compact />
             <div className="mt-8">
               <SocialLinks />
             </div>

@@ -24,15 +24,29 @@ export default function ContactSection() {
       <div className="section-container">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-            Start a project
+            Fixed quote · Reply in 1 business day
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Tell us what you want to build.
+            Get a fixed quote for your project.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-400">
             Share a few lines about your project. We reply within one business day with
             next steps and a fixed quote.
           </p>
+          <ul className="mx-auto mt-8 grid max-w-md grid-cols-1 gap-2.5 text-left sm:grid-cols-2">
+            <li className="rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-xs leading-relaxed text-gray-300">
+              <span className="font-semibold text-white">2–4 weeks</span> typical website timeline
+            </li>
+            <li className="rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-xs leading-relaxed text-gray-300">
+              <span className="font-semibold text-white">Fixed price</span> agreed before work begins
+            </li>
+            <li className="rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-xs leading-relaxed text-gray-300">
+              <span className="font-semibold text-white">Full ownership</span> of design, code, and content
+            </li>
+            <li className="rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-xs leading-relaxed text-gray-300">
+              <span className="font-semibold text-white">Support after launch</span> for fixes and improvements
+            </li>
+          </ul>
 
           <div className="mt-10">
             {submitted ? (

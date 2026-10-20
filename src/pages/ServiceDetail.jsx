@@ -101,7 +101,7 @@ export default function ServiceDetail() {
               ))}
             </div>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/contact" className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold">Start a project</Link>
+              <Link to="/contact" className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold">Get a fixed quote</Link>
             </div>
           </div>
         </section>

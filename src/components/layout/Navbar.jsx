@@ -38,7 +38,7 @@ export default function Navbar() {
               to="/contact"
               className="minimal-button-primary rounded-full px-4 py-1.5 text-xs font-semibold"
             >
-              Start a project
+              Get a fixed quote
             </Link>
           </nav>
 
@@ -91,7 +91,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="minimal-button-primary block w-full rounded-full py-3 text-center text-sm font-semibold"
             >
-              Start a project
+              Get a fixed quote
             </Link>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import ContactSection from '../components/sections/ContactSection'
+import SelectedWork from '../components/sections/SelectedWork'
+import Testimonials from '../components/sections/Testimonials'
 import { services, processSteps } from '../data/services'
 import { faqs } from '../data/faq'
 import useSeo from '../hooks/useSeo'
@@ -54,7 +56,8 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
-              Websites, mobile apps, Shopify stores, and clean UI.
+              Conversion-focused websites and Shopify stores for growing
+              businesses — plus mobile apps, web apps, and product UI.
               Fixed quotes, fast delivery, support after launch.
             </p>
 
@@ -63,7 +66,7 @@ export default function Home() {
                 to="/contact"
                 className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold"
               >
-                Start a project
+                Get a fixed quote
               </Link>
               <Link
                 to="/services"
@@ -119,6 +122,11 @@ export default function Home() {
       </section>
 
       {/* ========================================================
+          SELECTED WORK
+         ======================================================== */}
+      <SelectedWork />
+
+      {/* ========================================================
           PROCESS
          ======================================================== */}
       <section className="py-24 border-t border-white/[0.08] bg-black">
@@ -148,6 +156,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ========================================================
+          TESTIMONIALS
+         ======================================================== */}
+      <Testimonials />
 
       {/* ========================================================
           FAQ

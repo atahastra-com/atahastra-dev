@@ -69,7 +69,7 @@ export default function Careers() {
                 to="/contact"
                 className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold"
               >
-                Start a project
+                Get a fixed quote
               </Link>
             </div>
 

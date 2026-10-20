@@ -59,7 +59,7 @@ export default function About() {
         </div>
 
         <div className="mt-20 max-w-2xl border-t border-white/[0.08] pt-14">
-          <h2 className="text-xl font-bold text-white sm:text-2xl">Start a project</h2>
+          <h2 className="text-xl font-bold text-white sm:text-2xl">Get a fixed quote</h2>
           <p className="mt-3 text-base text-gray-400">
             Tell us about your website, app, or store idea and we reply within one
             business day.
