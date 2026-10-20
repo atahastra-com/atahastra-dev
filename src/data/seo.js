@@ -43,6 +43,27 @@ export const PAGE_SEO = {
       'The page you are looking for does not exist. Explore our services or start a project with Atahastra.',
     noindex: true,
   },
+  privacy: {
+    path: '/privacy',
+    title: 'Privacy Policy | Atahastra',
+    description:
+      'How Atahastra collects, uses, and protects your personal information when you visit our website or contact us.',
+    noindex: true,
+  },
+  terms: {
+    path: '/terms',
+    title: 'Terms & Conditions | Atahastra',
+    description:
+      'The terms governing your use of the Atahastra website, including services information, intellectual property, and liability.',
+    noindex: true,
+  },
+  cookies: {
+    path: '/cookies',
+    title: 'Cookie Policy | Atahastra',
+    description:
+      'How Atahastra and linked third-party services use cookies, and how you can manage them in your browser.',
+    noindex: true,
+  },
 }
 
 export const serviceSeo = Object.fromEntries(

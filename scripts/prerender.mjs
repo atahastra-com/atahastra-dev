@@ -6,6 +6,7 @@
 // Output (served by Vercel with "cleanUrls"):
 //   dist/index.html  dist/services.html  dist/about.html
 //   dist/contact.html  dist/careers.html  dist/404.html
+//   dist/privacy.html  dist/terms.html  dist/cookies.html
 
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -32,6 +33,9 @@ const ROUTES = [
   { key: 'about', url: '/about', file: 'about.html' },
   { key: 'contact', url: '/contact', file: 'contact.html' },
   { key: 'careers', url: '/careers', file: 'careers.html' },
+  { key: 'privacy', url: '/privacy', file: 'privacy.html' },
+  { key: 'terms', url: '/terms', file: 'terms.html' },
+  { key: 'cookies', url: '/cookies', file: 'cookies.html' },
   ...Object.entries(serviceSeo).map(([slug, seo]) => ({
     key: `service:${slug}`,
     url: seo.path,

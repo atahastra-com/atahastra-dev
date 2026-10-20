@@ -96,6 +96,19 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-gray-500">
           <p>© {currentYear} Atahastra. All rights reserved.</p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+            <Link to="/privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <span>·</span>
+            <Link to="/terms" className="hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
+            <span>·</span>
+            <Link to="/cookies" className="hover:text-white transition-colors">
+              Cookie Policy
+            </Link>
+          </nav>
           <SocialLinks />
         </div>
       </div>
