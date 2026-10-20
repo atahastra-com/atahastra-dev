@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 import { Link } from 'react-router-dom'
 import SocialLinks from '../components/ui/SocialLinks'
 import Reveal from '../components/ui/Reveal'
@@ -17,26 +18,15 @@ const SERVICE_OPTIONS = [
 ]
 
 export default function Contact() {
+  const [formState, handleSubmit] = useForm('mdeargpg')
   const [form, setForm] = useState({
     name: '',
     email: '',
     type: SERVICE_OPTIONS[0],
     project: '',
   })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   const update = (key) => (e) => setForm((prev) => ({ ...prev, [key]: e.target.value }))
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!form.email.includes('@') || !form.name.trim() || !form.project.trim()) return
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 500)
-  }
 
   useSeo(PAGE_SEO.contact)
 
@@ -78,7 +68,7 @@ export default function Contact() {
             {/* Ambient top border specular highlight */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
-            {submitted ? (
+            {formState.succeeded ? (
               <div className="py-12 text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
                   <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,6 +89,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-name"
+                    name="name"
                     type="text"
                     value={form.name}
                     onChange={update('name')}
@@ -106,6 +97,7 @@ export default function Contact() {
                     required
                     className="w-full rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none"
                   />
+                  <ValidationError field="name" errors={formState.errors} />
                 </div>
 
                 <div className="space-y-1.5">
@@ -114,6 +106,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-email"
+                    name="email"
                     type="email"
                     value={form.email}
                     onChange={update('email')}
@@ -121,6 +114,7 @@ export default function Contact() {
                     required
                     className="w-full rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none"
                   />
+                  <ValidationError field="email" errors={formState.errors} />
                 </div>
 
                 <div className="space-y-1.5">
@@ -130,6 +124,7 @@ export default function Contact() {
                   <div className="relative">
                     <select
                       id="contact-type"
+                      name="project_type"
                       value={form.type}
                       onChange={update('type')}
                       className="w-full appearance-none rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 pr-10 text-sm text-white transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none cursor-pointer"
@@ -145,6 +140,7 @@ export default function Contact() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
+                    <ValidationError field="project_type" errors={formState.errors} />
                   </div>
                 </div>
 
@@ -154,6 +150,7 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="contact-project"
+                    name="project"
                     value={form.project}
                     onChange={update('project')}
                     placeholder="Describe your goals, timeline, and budget range..."
@@ -161,15 +158,17 @@ export default function Contact() {
                     rows={4}
                     className="w-full resize-none rounded-xl border border-white/[0.08] bg-[#070707] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 hover:border-white/[0.16] focus:border-white/30 focus:bg-[#0d0d0d] focus:outline-none leading-relaxed"
                   />
+                  <ValidationError field="project" errors={formState.errors} />
                 </div>
 
                 <div className="pt-1">
+                  <ValidationError errors={formState.errors} />
                   <button
                     type="submit"
-                    disabled={loading}
+                    disabled={formState.submitting}
                     className="group relative flex w-full items-center justify-center gap-2 rounded-xl border border-white/[0.14] bg-[#121212] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:border-white/30 hover:bg-[#1a1a1a] hover:shadow-[0_0_24px_rgba(255,255,255,0.06)] active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                   >
-                    {loading ? (
+                    {formState.submitting ? (
                       <span className="flex items-center gap-2">
                         <svg className="h-4 w-4 animate-spin text-white" viewBox="0 0 24 24" fill="none">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
