@@ -28,10 +28,10 @@ export default function NotFound() {
                 Back to home
               </Link>
               <Link
-                to="/services"
+                to="/proxim-os"
                 className="minimal-button-secondary rounded-full px-7 py-3 text-sm font-medium"
               >
-                View services
+                Proxim OS 1
               </Link>
               <Link
                 to="/contact"

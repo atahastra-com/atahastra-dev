@@ -13,75 +13,70 @@ export default function About() {
       <div className="section-container pt-16 pb-24 md:pt-24 md:pb-32">
         <Reveal>
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-500">
-              Studio
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-gray-500">
+              About
             </p>
-            <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-              About Atahastra
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+              Atahastra
             </h1>
-            <p className="mt-8 text-lg leading-relaxed text-gray-300 md:text-xl font-medium">
-              A small agency that designs and builds websites, apps, and stores.
+            <p className="mt-8 text-lg font-medium leading-relaxed text-gray-300 md:text-xl">
+              We build Proxim OS — a clean, fast desktop operating system that
+              respects your hardware and your privacy.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-gray-400 md:text-lg">
-              We help startups and local businesses launch online: websites,
-              mobile apps for iOS and Android, Shopify stores, custom web
-              apps, and UI/UX design. You work directly with the people building
-              your project, with fixed quotes and clear timelines.
+            <p className="mt-4 text-base leading-relaxed text-gray-400">
+              Built on Debian 13 (Trixie) and Linux 6.12, Proxim OS focuses on
+              quiet craft: fluid motion, out-of-the-box laptop support, signed
+              OTA updates, and zero telemetry.
             </p>
           </div>
         </Reveal>
 
         <div className="mt-20 max-w-3xl border-t border-white/[0.08] pt-14">
-          <h2 className="text-xl font-bold text-white sm:text-2xl">What we believe</h2>
+          <h2 className="text-xl font-semibold text-white sm:text-2xl">Principles</h2>
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div>
               <span className="font-mono text-xs text-gray-500">01</span>
-              <h3 className="mt-2 text-base font-semibold text-white">Clarity first</h3>
-              <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                Fixed scope, fixed price. No jargon, no surprise invoices.
+              <h3 className="mt-2 text-base font-semibold text-white">Quiet by design</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                No ads, no popups, no bloat. Every pixel has a reason to exist.
               </p>
             </div>
             <div>
               <span className="font-mono text-xs text-gray-500">02</span>
-              <h3 className="mt-2 text-base font-semibold text-white">Built to convert</h3>
-              <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                Every page has a job: calls, enquiries, checkouts, or bookings.
+              <h3 className="mt-2 text-base font-semibold text-white">Real hardware first</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                Wi-Fi, Bluetooth, touchpads, codecs, and dual-boot work from first boot.
               </p>
             </div>
             <div>
               <span className="font-mono text-xs text-gray-500">03</span>
-              <h3 className="mt-2 text-base font-semibold text-white">Support after launch</h3>
-              <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-                We stay on after launch for fixes, speed, and improvements.
+              <h3 className="mt-2 text-base font-semibold text-white">Yours completely</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                Zero telemetry, Ed25519-signed updates, and full local control.
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-20 max-w-2xl border-t border-white/[0.08] pt-14">
-          <h2 className="text-xl font-bold text-white sm:text-2xl">Get a fixed quote</h2>
-          <p className="mt-3 text-base text-gray-400">
-            Tell us about your website, app, or store idea and we reply within one
-            business day.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4">
             <Link
-              to="/contact"
+              to="/proxim-os"
               className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold"
             >
-              Contact us
+              Explore Proxim OS 1
             </Link>
             <Link
-              to="/services"
+              to="/contact"
               className="minimal-button-secondary rounded-full px-7 py-3 text-sm font-medium"
             >
-              View services
+              Contact us
             </Link>
           </div>
           <p className="mt-6">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-base text-white font-mono hover:underline"
+              className="font-mono text-sm text-gray-400 transition-colors hover:text-white"
             >
               {CONTACT_EMAIL}
             </a>

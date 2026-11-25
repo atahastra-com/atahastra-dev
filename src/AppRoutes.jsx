@@ -3,12 +3,10 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import PageFallback from './components/ui/PageFallback'
 import Home from './pages/Home'
+import ProximOS from './pages/ProximOS'
 
-const Services = lazy(() => import('./pages/Services'))
-const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
-const Careers = lazy(() => import('./pages/Careers'))
 const Privacy = lazy(() => import('./pages/Privacy'))
 const Terms = lazy(() => import('./pages/Terms'))
 const Cookies = lazy(() => import('./pages/Cookies'))
@@ -21,11 +19,9 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/proxim-os" element={<ProximOS />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/careers" element={<Careers />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
@@ -35,4 +31,3 @@ export default function AppRoutes() {
     </Suspense>
   )
 }
-

@@ -1,11 +1,10 @@
 // Build-time prerenderer.
-// Renders every route to static HTML with route-specific <head> tags and JSON-LD,
-// so crawlers and social previews get complete pages without running JavaScript.
+// Renders every route to static HTML with route-specific <head> tags and JSON-LD.
 //
 // Runs after `vite build` (client) and `vite build --ssr` (server bundle).
 // Output (served by Vercel with "cleanUrls"):
-//   dist/index.html  dist/services.html  dist/about.html
-//   dist/contact.html  dist/careers.html  dist/404.html
+//   dist/index.html  dist/proxim-os.html  dist/about.html
+//   dist/contact.html  dist/404.html
 //   dist/privacy.html  dist/terms.html  dist/cookies.html
 
 import fs from 'node:fs/promises'
@@ -20,28 +19,17 @@ const {
   render,
   PAGE_SEO,
   SITE_URL,
-  SITE_NAME,
-  faqs,
-  services,
-  serviceSeo,
   CONTACT_EMAIL,
 } = await import(pathToFileURL(ssrEntry).href)
 
 const ROUTES = [
   { key: 'home', url: '/', file: 'index.html' },
-  { key: 'services', url: '/services', file: 'services.html' },
+  { key: 'proximOs', url: '/proxim-os', file: 'proxim-os.html' },
   { key: 'about', url: '/about', file: 'about.html' },
   { key: 'contact', url: '/contact', file: 'contact.html' },
-  { key: 'careers', url: '/careers', file: 'careers.html' },
   { key: 'privacy', url: '/privacy', file: 'privacy.html' },
   { key: 'terms', url: '/terms', file: 'terms.html' },
   { key: 'cookies', url: '/cookies', file: 'cookies.html' },
-  ...Object.entries(serviceSeo).map(([slug, seo]) => ({
-    key: `service:${slug}`,
-    url: seo.path,
-    file: `services/${slug}.html`,
-    seo,
-  })),
   // Any unmatched URL renders the catch-all NotFound route.
   { key: 'notFound', url: '/__not-found__', file: '404.html' },
 ]
@@ -53,7 +41,6 @@ const escapeAttr = (value) =>
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
 
-// Safe to embed inside <script type="application/ld+json">.
 const jsonLd = (data) =>
   `<script type="application/ld+json">${JSON.stringify(data)
     .replace(/</g, '\\u003c')
@@ -66,72 +53,19 @@ function structuredData(key, seo) {
   const blocks = []
   const url = pageUrl(seo)
 
-  if (key !== 'home' && key !== 'notFound') {
+  if (key === 'home' || key === 'proximOs') {
     blocks.push({
       '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: seo.title.split('|')[0].trim(), item: url },
-      ],
+      '@type': 'SoftwareApplication',
+      name: 'Proxim OS 1',
+      operatingSystem: 'Linux (Debian 13 Trixie, Kernel 6.12)',
+      applicationCategory: 'OperatingSystem',
+      softwareVersion: '1',
+      url,
+      author: { '@id': `${SITE_URL}/#organization` },
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      description: seo.description,
     })
-  }
-
-  if (key === 'home') {
-    blocks.push({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: faqs.map((f) => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
-      })),
-    })
-  }
-
-  if (key === 'services') {
-    blocks.push({
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: `${SITE_NAME} services`,
-      itemListElement: services.map((s, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        item: {
-          '@type': 'Service',
-          name: s.title,
-          description: s.short,
-          provider: { '@id': `${SITE_URL}/#organization` },
-          url: `${SITE_URL}/services/${s.slug}`,
-        },
-      })),
-    })
-  }
-
-  if (key.startsWith('service:')) {
-    const slug = key.slice('service:'.length)
-    const service = services.find((item) => item.slug === slug)
-    if (service) {
-      blocks.push({
-        '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: service.title,
-        description: service.description,
-        url,
-        provider: { '@id': `${SITE_URL}/#organization` },
-      })
-      if (Array.isArray(service.faqs) && service.faqs.length > 0) {
-        blocks.push({
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: service.faqs.map((f) => ({
-            '@type': 'Question',
-            name: f.q,
-            acceptedAnswer: { '@type': 'Answer', text: f.a },
-          })),
-        })
-      }
-    }
   }
 
   if (key === 'contact') {
@@ -174,7 +108,6 @@ function applyHead(template, key, seo) {
   html = setTag(html, /<meta\s+name="twitter:description"[\s\S]*?\/>/, `<meta name="twitter:description" content="${description}" />`, 'twitter:description')
 
   if (seo.noindex) {
-    // A 404 page should not advertise a canonical or a share URL.
     html = html.replace(/\s*<link\s+rel="canonical"[\s\S]*?\/>/, '')
     html = html.replace(/\s*<meta\s+property="og:url"[\s\S]*?\/>/, '')
   } else {
@@ -193,7 +126,7 @@ if (!template.includes('<div id="root"></div>')) {
 }
 
 for (const route of ROUTES) {
-  const seo = route.seo ?? PAGE_SEO[route.key]
+  const seo = PAGE_SEO[route.key]
   const appHtml = await render(route.url)
   const html = applyHead(template, route.key, seo).replace(
     '<div id="root"></div>',
@@ -205,20 +138,18 @@ for (const route of ROUTES) {
   console.log(`prerendered ${route.url.padEnd(16)} -> dist/${route.file}`)
 }
 
-// Keep sitemap lastmod current on every build.
 const today = new Date().toISOString().slice(0, 10)
-const sitemapPages = ROUTES.filter((r) => !(r.seo ?? PAGE_SEO[r.key]).noindex)
-const priorities = { home: '1.0', services: '0.9', contact: '0.9', about: '0.7', careers: '0.5', service: '0.7' }
-const priorityFor = (key) => priorities[key] ?? (key.startsWith('service:') ? priorities.service : '0.5')
+const sitemapPages = ROUTES.filter((r) => !PAGE_SEO[r.key].noindex)
+const priorities = { home: '1.0', proximOs: '0.9', contact: '0.7', about: '0.7' }
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapPages
   .map(
     (r) => `  <url>
-    <loc>${pageUrl(r.seo ?? PAGE_SEO[r.key])}</loc>
+    <loc>${pageUrl(PAGE_SEO[r.key])}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${r.key === 'home' ? 'weekly' : 'monthly'}</changefreq>
-    <priority>${priorityFor(r.key)}</priority>
+    <changefreq>${r.key === 'home' || r.key === 'proximOs' ? 'weekly' : 'monthly'}</changefreq>
+    <priority>${priorities[r.key] ?? '0.5'}</priority>
   </url>`,
   )
   .join('\n')}

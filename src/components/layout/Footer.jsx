@@ -1,20 +1,17 @@
 import { Link } from 'react-router-dom'
 import Logo from '../ui/Logo'
 import SocialLinks from '../ui/SocialLinks'
-import { CONTACT_EMAIL, CAL_BOOKING_URL } from '../../data/contact'
+import { CONTACT_EMAIL } from '../../data/contact'
+
+const productLinks = [
+  { label: 'Proxim OS 1', to: '/proxim-os' },
+  { label: 'Install', to: '/#install' },
+  { label: 'Release Notes', to: '/#releases' },
+]
 
 const companyLinks = [
   { label: 'About', to: '/about' },
-  { label: 'Careers', to: '/careers' },
   { label: 'Contact', to: '/contact' },
-  { label: 'Book 30-min call', href: CAL_BOOKING_URL, external: true },
-]
-
-const serviceLinks = [
-  { label: 'Custom web apps', to: '/services/web-apps' },
-  { label: 'Mobile app development', to: '/services/mobile-apps' },
-  { label: 'Shopify & ecommerce', to: '/services/shopify-ecommerce' },
-  { label: 'Website development', to: '/services/website-design-development' },
 ]
 
 export default function Footer() {
@@ -23,25 +20,16 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/[0.08] bg-black">
       <div className="section-container py-14 md:py-16">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
             <Logo size="md" />
             <p className="mt-4 text-sm leading-relaxed text-gray-400">
-              Atahastra is a design and development agency building websites,
-              mobile apps, Shopify stores, web apps, and UI.
+              Makers of Proxim OS — a clean, fast, zero-telemetry desktop
+              operating system.
             </p>
-            <p className="mt-3 text-xs text-gray-500 font-mono flex flex-wrap items-center gap-x-2 gap-y-1">
-              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
+            <p className="mt-3 font-mono text-xs text-gray-500">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-white">
                 {CONTACT_EMAIL}
-              </a>
-              <span>·</span>
-              <a
-                href={CAL_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                Schedule call ↗
               </a>
             </p>
           </div>
@@ -49,18 +37,26 @@ export default function Footer() {
           <div className="flex flex-col gap-8 sm:flex-row sm:gap-12">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-                Services
+                Product
               </p>
               <nav className="mt-4 flex flex-col gap-2.5">
-                {serviceLinks.map((link) => (
+                {productLinks.map((link) => (
                   <Link
                     key={link.label}
                     to={link.to}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                    className="text-sm text-gray-400 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
                 ))}
+                <a
+                  href="/proxim-os/latest.json"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-400 transition-colors hover:text-white"
+                >
+                  OTA Manifest ↗
+                </a>
               </nav>
             </div>
             <div>
@@ -68,44 +64,32 @@ export default function Footer() {
                 Company
               </p>
               <nav className="mt-4 flex flex-col gap-2.5">
-                {companyLinks.map((link) =>
-                  link.external ? (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1"
-                    >
-                      {link.label} ↗
-                    </a>
-                  ) : (
-                    <Link
-                      key={link.label}
-                      to={link.to}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  )
-                )}
+                {companyLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    className="text-sm text-gray-400 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </nav>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-gray-500">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-gray-500 sm:flex-row">
           <p>© {currentYear} Atahastra. All rights reserved.</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-            <Link to="/privacy" className="hover:text-white transition-colors">
+            <Link to="/privacy" className="transition-colors hover:text-white">
               Privacy Policy
             </Link>
             <span>·</span>
-            <Link to="/terms" className="hover:text-white transition-colors">
-              Terms & Conditions
+            <Link to="/terms" className="transition-colors hover:text-white">
+              Terms &amp; Conditions
             </Link>
             <span>·</span>
-            <Link to="/cookies" className="hover:text-white transition-colors">
+            <Link to="/cookies" className="transition-colors hover:text-white">
               Cookie Policy
             </Link>
           </nav>
