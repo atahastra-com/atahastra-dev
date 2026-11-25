@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Proxim OS 1",
+  "channel": "stable",
+  "released_at": "2026-11-25",
+  "notes": [
+    "Initial Proxim OS 1 release"
+  ]
+}
