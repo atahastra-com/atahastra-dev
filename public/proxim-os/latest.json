@@ -2,11 +2,21 @@
   "version": "1.1",
   "name": "Proxim OS 1.1",
   "channel": "stable",
+  "released": "2026-11-26",
   "released_at": "2026-11-26",
+  "url": "https://github.com/atahastra-com/proxim/releases/download/v1.1/proxim-os-1.1.pxu",
+  "size_bytes": 43511156,
+  "sha256": "0163532be1a504e8736e48598be94b614b0c98b4c22cb1b75446cec05063cf3d",
+  "signature": "g7uXr+b1Dn25QaGccWMOJxPnk+pCOr+srSTM/vmIzsHf7B9/+ZkQrsgVnm/P9EHT/zG3wQCeLMIyoSuJMHpsBw==",
   "notes": [
-    "Kora icon pack (GPL-3.0) with 2x supersampled rendering on satin-obsidian squircles",
-    "Cleaner USB setup with clickable Wi-Fi list, password dialog, Ethernet auto-detection, and IP timezone sync",
-    "Updated .deb Package Installer with auto-resize, Open Now button, and right-click Uninstall from Launchpad",
-    "Fixed Airplane Mode sync, unlocked default keyring for autologin, Chrome titlebar buttons, System (/) bookmark in Files, and live ~/Desktop sync"
+    "New Kora icon theme on supersampled satin-obsidian squircles + matching Launchpad folder tiles",
+    "Redesigned setup/installer Wi-Fi UI with live clickable network list & password dialog",
+    "Auto-hide dock and bottom bar during initial setup & Live USB installer",
+    "Compact Package Installer (.deb) with collapsible details, auto-resizing window, Open Now button, and auto-close after uninstall",
+    "Right-click Uninstall option on Launchpad for user-installed apps",
+    "Fixed Flight / Airplane Mode (rfkill permissions + NetworkManager sync)",
+    "Pre-created unlocked default keyring for autologin (no keyring password prompt on first Chrome launch)",
+    "Fixed Chrome window caption buttons (removed oversized titlebutton circles)",
+    "Added System (/) bookmark in Files sidebar and removed GNOME Maps from default apps"
   ]
 }
