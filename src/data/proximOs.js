@@ -5,7 +5,7 @@ export const ISO_DOWNLOAD = {
   releaseUrl: 'https://github.com/atahastra-com/proxim/releases/latest',
   filename: 'proxim-os-live-amd64.iso',
   size: '1.5 GB',
-  sha256: '0ec3cb12a94757f65def2e173da97759b402aa010a9632220ca8022f2ccfe4e7',
+  sha256: '584a49bf451d2a1ec2221dbe2a6fce8ea33d6539682b7a4092a8c2821d3dfdbe',
 }
 
 export const FALLBACK_RELEASE = {
