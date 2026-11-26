@@ -64,7 +64,7 @@ export default function About() {
               to="/proxim-os"
               className="minimal-button-primary rounded-full px-7 py-3 text-sm font-semibold"
             >
-              Explore Proxim OS 1
+              Explore Proxim OS
             </Link>
             <Link
               to="/contact"

@@ -5,15 +5,20 @@ export const ISO_DOWNLOAD = {
   releaseUrl: 'https://github.com/atahastra-com/proxim/releases/latest',
   filename: 'proxim-os-live-amd64.iso',
   size: '1.5 GB',
-  sha256: '584a49bf451d2a1ec2221dbe2a6fce8ea33d6539682b7a4092a8c2821d3dfdbe',
+  sha256: '5ff148d76d64582de3de09ecf25680a45ac9d5d928994ba2102d0b83e3d5a88f',
 }
 
 export const FALLBACK_RELEASE = {
-  version: '1',
-  name: 'Proxim OS 1',
+  version: '1.1',
+  name: 'Proxim OS 1.1',
   channel: 'stable',
-  released_at: '2026-11-25',
-  notes: ['Initial Proxim OS 1 release'],
+  released_at: '2026-11-26',
+  notes: [
+    'Kora icon pack (GPL-3.0) with 2x supersampled rendering on satin-obsidian squircles',
+    'Cleaner USB setup with clickable Wi-Fi list, password dialog, Ethernet auto-detection, and IP timezone sync',
+    'Updated .deb Package Installer with auto-resize, Open Now button, and right-click Uninstall from Launchpad',
+    'Fixed Airplane Mode sync, unlocked default keyring for autologin, Chrome titlebar buttons, System (/) bookmark in Files, and live ~/Desktop sync',
+  ],
 }
 
 export const PROXIM_SCREENSHOTS = [
@@ -21,19 +26,19 @@ export const PROXIM_SCREENSHOTS = [
     id: 'desktop',
     label: 'Desktop',
     src: '/images/proxim-os/desktop.jpg',
-    alt: 'Proxim OS 1 desktop with Launchpad app grid and frosted bottom dock',
+    alt: 'Proxim OS desktop with Launchpad app grid and frosted bottom dock',
   },
   {
     id: 'software',
     label: 'Software',
     src: '/images/proxim-os/software.jpg',
-    alt: 'Proxim OS 1 Software store with Flathub apps',
+    alt: 'Proxim OS Software store with Flathub apps',
   },
   {
     id: 'settings',
     label: 'Settings',
     src: '/images/proxim-os/settings.jpg',
-    alt: 'Proxim OS 1 Settings Appearance window',
+    alt: 'Proxim OS Settings Appearance window',
   },
 ]
 
@@ -57,7 +62,7 @@ export const PROXIM_PILLARS = [
 ]
 
 export const PROXIM_SPECS = [
-  { label: 'Version', value: 'Proxim OS 1 (64-bit amd64, UEFI + BIOS Hybrid)' },
+  { label: 'Version', value: 'Proxim OS 1.1 (64-bit amd64, UEFI + BIOS Hybrid)' },
   { label: 'Base', value: 'Debian 13 (Trixie), Linux Kernel 6.12' },
   { label: 'Desktop', value: 'GNOME Shell 48 (kos-shell)' },
   { label: 'File Size', value: '1.5 GB (Live & Installer ISO)' },

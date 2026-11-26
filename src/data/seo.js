@@ -8,15 +8,15 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/hero.png`
 export const PAGE_SEO = {
   home: {
     path: '/',
-    title: 'Proxim OS 1 — Clean. Fast. Yours. | Atahastra',
+    title: 'Proxim OS 1.1 — Fast, Simple, Debian-based Desktop OS | Atahastra',
     description:
-      'Proxim OS 1 by Atahastra: a clean, fast desktop operating system built on Debian 13 (Trixie) and Linux 6.12 with signed OTA updates and zero telemetry.',
+      'Proxim OS 1.1 by Atahastra: a fast, simple, Debian-based desktop operating system built on Debian 13 (Trixie) and Linux 6.12 with signed OTA updates and zero telemetry.',
   },
   proximOs: {
     path: '/proxim-os',
-    title: 'Proxim OS 1 — Clean. Fast. Yours. | Atahastra',
+    title: 'Proxim OS 1.1 — Fast, Simple, Debian-based Desktop OS | Atahastra',
     description:
-      'Proxim OS 1 by Atahastra: a clean, fast desktop operating system built on Debian 13 (Trixie), Linux 6.12, and kos-shell with signed OTA updates and zero telemetry.',
+      'Proxim OS 1.1 by Atahastra: a fast, simple, Debian-based desktop operating system built on Debian 13 (Trixie), Linux 6.12, and kos-shell with signed OTA updates and zero telemetry.',
   },
   about: {
     path: '/about',

@@ -1,31 +1,32 @@
-import { useState } from 'react'
-import useSeo from '../hooks/useSeo'
-import { PAGE_SEO } from '../data/seo'
+import { useState } from "react";
+import useSeo from "../hooks/useSeo";
+import { PAGE_SEO } from "../data/seo";
 import {
   ISO_DOWNLOAD,
   PROXIM_SCREENSHOTS,
   PROXIM_PILLARS,
   PROXIM_SPECS,
   useProximRelease,
-} from '../data/proximOs'
+} from "../data/proximOs";
 
 export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
-  useSeo(seo)
-  const release = useProximRelease()
-  const [activeShotId, setActiveShotId] = useState(PROXIM_SCREENSHOTS[0].id)
-  const [copied, setCopied] = useState(false)
+  useSeo(seo);
+  const release = useProximRelease();
+  const [activeShotId, setActiveShotId] = useState(PROXIM_SCREENSHOTS[0].id);
+  const [copied, setCopied] = useState(false);
   const activeShot =
-    PROXIM_SCREENSHOTS.find((shot) => shot.id === activeShotId) ?? PROXIM_SCREENSHOTS[0]
+    PROXIM_SCREENSHOTS.find((shot) => shot.id === activeShotId) ??
+    PROXIM_SCREENSHOTS[0];
 
   const copyChecksum = async () => {
     try {
-      await navigator.clipboard.writeText(ISO_DOWNLOAD.sha256)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(ISO_DOWNLOAD.sha256);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch {
       // Clipboard API unavailable
     }
-  }
+  };
 
   return (
     <div className="bg-black text-white">
@@ -36,7 +37,7 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
         <div className="section-container">
           <div className="max-w-2xl">
             <h1 className="text-4xl font-semibold tracking-[-0.035em] text-white sm:text-6xl leading-[1.06]">
-              Proxim OS 1
+              {release.name}
             </h1>
 
             <p className="mt-5 text-lg leading-relaxed text-zinc-400 sm:text-xl font-normal">
@@ -76,7 +77,7 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
 
             <div className="mt-4 flex items-center gap-5">
               {PROXIM_SCREENSHOTS.map((shot) => {
-                const isActive = shot.id === activeShot.id
+                const isActive = shot.id === activeShot.id;
                 return (
                   <button
                     key={shot.id}
@@ -84,13 +85,13 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
                     onClick={() => setActiveShotId(shot.id)}
                     className={`text-sm transition-colors ${
                       isActive
-                        ? 'font-medium text-white'
-                        : 'text-zinc-500 hover:text-zinc-300'
+                        ? "font-medium text-white"
+                        : "text-zinc-500 hover:text-zinc-300"
                     }`}
                   >
                     {shot.label}
                   </button>
-                )
+                );
               })}
             </div>
           </div>
@@ -100,7 +101,10 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
       {/* ========================================================
           OVERVIEW
          ======================================================== */}
-      <section id="features" className="border-t border-white/[0.08] py-20 md:py-24">
+      <section
+        id="features"
+        className="border-t border-white/[0.08] py-20 md:py-24"
+      >
         <div className="section-container">
           <div className="grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2">
             {PROXIM_PILLARS.map((item) => (
@@ -143,7 +147,10 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
       {/* ========================================================
           DOWNLOAD, INSTALL & SPECIFICATIONS
          ======================================================== */}
-      <section id="install" className="border-t border-white/[0.08] py-20 md:py-24">
+      <section
+        id="install"
+        className="border-t border-white/[0.08] py-20 md:py-24"
+      >
         <div className="section-container">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
             {/* Download & 3-Step Install */}
@@ -154,22 +161,34 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
 
               <ol className="mt-6 space-y-4 text-sm leading-relaxed text-zinc-300">
                 <li className="flex gap-4">
-                  <span className="font-mono text-xs text-zinc-500 pt-0.5">1.</span>
+                  <span className="font-mono text-xs text-zinc-500 pt-0.5">
+                    1.
+                  </span>
                   <span>
-                    Flash <code className="font-mono text-xs text-white">{ISO_DOWNLOAD.filename}</code> to
-                    a USB drive using Rufus, balenaEtcher, or <code className="font-mono text-xs text-white">dd</code>.
+                    Flash{" "}
+                    <code className="font-mono text-xs text-white">
+                      {ISO_DOWNLOAD.filename}
+                    </code>{" "}
+                    to a USB drive using Rufus, balenaEtcher, or{" "}
+                    <code className="font-mono text-xs text-white">dd</code>.
                   </span>
                 </li>
                 <li className="flex gap-4">
-                  <span className="font-mono text-xs text-zinc-500 pt-0.5">2.</span>
+                  <span className="font-mono text-xs text-zinc-500 pt-0.5">
+                    2.
+                  </span>
                   <span>
-                    Boot from the USB drive to try the live desktop or launch Install Proxim OS.
+                    Boot from the USB drive to try the live desktop or launch
+                    Install Proxim OS.
                   </span>
                 </li>
                 <li className="flex gap-4">
-                  <span className="font-mono text-xs text-zinc-500 pt-0.5">3.</span>
+                  <span className="font-mono text-xs text-zinc-500 pt-0.5">
+                    3.
+                  </span>
                   <span>
-                    Follow the guided setup (Wi-Fi/Ethernet, timezone, disk, user) and remove the USB once the system restarts.
+                    Follow the guided setup (Wi-Fi/Ethernet, timezone, disk,
+                    user) and remove the USB once the system restarts.
                   </span>
                 </li>
               </ol>
@@ -200,7 +219,7 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
                     onClick={copyChecksum}
                     className="font-mono text-xs text-zinc-400 transition-colors hover:text-white"
                   >
-                    {copied ? 'Copied' : 'Copy'}
+                    {copied ? "Copied" : "Copy"}
                   </button>
                 </div>
                 <p className="mt-1.5 break-all font-mono text-xs text-zinc-400 select-all">
@@ -220,8 +239,12 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
                     key={spec.label}
                     className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
                   >
-                    <dt className="text-xs text-zinc-500 shrink-0">{spec.label}</dt>
-                    <dd className="text-sm text-zinc-200 sm:text-right">{spec.value}</dd>
+                    <dt className="text-xs text-zinc-500 shrink-0">
+                      {spec.label}
+                    </dt>
+                    <dd className="text-sm text-zinc-200 sm:text-right">
+                      {spec.value}
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -233,7 +256,10 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
       {/* ========================================================
           RELEASE NOTES
          ======================================================== */}
-      <section id="releases" className="border-t border-white/[0.08] py-20 md:py-24">
+      <section
+        id="releases"
+        className="border-t border-white/[0.08] py-20 md:py-24"
+      >
         <div className="section-container">
           <div className="max-w-2xl">
             <div className="flex items-baseline justify-between gap-4">
@@ -263,7 +289,7 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
             <div className="mt-8 border-t border-white/[0.08] pt-6">
               <div className="flex items-baseline justify-between gap-4">
                 <p className="text-sm font-medium text-white">
-                  {release.name}{' '}
+                  {release.name}{" "}
                   <span className="font-mono text-xs font-normal text-zinc-500">
                     v{release.version} ({release.channel})
                   </span>
@@ -283,5 +309,5 @@ export default function ProximOS({ seo = PAGE_SEO.proximOs }) {
         </div>
       </section>
     </div>
-  )
+  );
 }

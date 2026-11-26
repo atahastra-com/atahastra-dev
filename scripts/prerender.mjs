@@ -57,10 +57,10 @@ function structuredData(key, seo) {
     blocks.push({
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
-      name: 'Proxim OS 1',
+      name: 'Proxim OS 1.1',
       operatingSystem: 'Linux (Debian 13 Trixie, Kernel 6.12)',
       applicationCategory: 'OperatingSystem',
-      softwareVersion: '1',
+      softwareVersion: '1.1',
       url,
       author: { '@id': `${SITE_URL}/#organization` },
       publisher: { '@id': `${SITE_URL}/#organization` },

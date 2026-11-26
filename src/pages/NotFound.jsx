@@ -31,7 +31,7 @@ export default function NotFound() {
                 to="/proxim-os"
                 className="minimal-button-secondary rounded-full px-7 py-3 text-sm font-medium"
               >
-                Proxim OS 1
+                Proxim OS
               </Link>
               <Link
                 to="/contact"

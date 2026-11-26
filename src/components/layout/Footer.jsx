@@ -4,7 +4,7 @@ import SocialLinks from '../ui/SocialLinks'
 import { CONTACT_EMAIL } from '../../data/contact'
 
 const productLinks = [
-  { label: 'Proxim OS 1', to: '/proxim-os' },
+  { label: 'Proxim OS', to: '/proxim-os' },
   { label: 'Install', to: '/#install' },
   { label: 'Release Notes', to: '/#releases' },
 ]

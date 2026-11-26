@@ -1,9 +1,12 @@
 {
-  "version": "1",
-  "name": "Proxim OS 1",
+  "version": "1.1",
+  "name": "Proxim OS 1.1",
   "channel": "stable",
-  "released_at": "2026-11-25",
+  "released_at": "2026-11-26",
   "notes": [
-    "Initial Proxim OS 1 release"
+    "Kora icon pack (GPL-3.0) with 2x supersampled rendering on satin-obsidian squircles",
+    "Cleaner USB setup with clickable Wi-Fi list, password dialog, Ethernet auto-detection, and IP timezone sync",
+    "Updated .deb Package Installer with auto-resize, Open Now button, and right-click Uninstall from Launchpad",
+    "Fixed Airplane Mode sync, unlocked default keyring for autologin, Chrome titlebar buttons, System (/) bookmark in Files, and live ~/Desktop sync"
   ]
 }
