@@ -14,14 +14,15 @@ export const LATEST_WEB_RELEASE = {
   channel: 'stable',
   released_at: '2026-11-27',
   notes: [
-    'Proxim AI Side Panel: Built-in right-edge AI assistant in the dock supporting Google Gemini, OpenAI, Anthropic Claude, AWS Bedrock, Custom OpenAI-compatible APIs (OpenRouter, Groq, etc.), and Local Ollama.',
-    'Full OS Agent Control: Launch apps, manage windows, adjust volume/Wi-Fi/Do Not Disturb, inspect your live screen, automate mouse & keyboard input, and watch commands run live in Terminal.',
-    'Clean AI Experience: Collapsed activity dropdown for reasoning and actions, plus inline Allow/Deny confirmation before destructive commands.',
-    'Dark Blurred Glass UI: Translucent dark-blur app windows with minimal boxless headers, frosted lists, and matching dark-blur dock, Calendar, and Quick Settings popups.',
-    'Minimal Lock Screen: Centered frosted-glass password pill over blurred wallpaper.',
-    'Refined Dock & Controls: System controls moved beside date/time on the left of the dock, larger 58px dock icons with frosted dark-glass tiles, and minimal Quick Settings tiles with a slim blue volume slider.',
-    'Smoother Software Updates: Clean bullet-list release notes, top Install pill, Wi-Fi detection, and automatic reuse of downloaded updates.',
-    'Pure Proxim OS Branding: Removed Linux/Debian/GNOME labels from Settings About/System Details and the Package Installer.',
+    'Built-in Proxim AI right-side panel in the dock supporting Gemini, OpenAI, Claude, AWS Bedrock, Custom OpenAI-compatible APIs, and Local Ollama',
+    'Full OS agent control: launch apps, manage windows, control volume/Wi-Fi/DND, live screen vision, mouse & keyboard automation, and visible Terminal execution',
+    'Clean collapsed activity dropdown in Proxim AI chat with safety confirmation before destructive actions',
+    'Dark blurred glass app windows with minimal boxless headers, translucent frosted lists, and matching dark-blur dock, Calendar, and Quick Settings popups',
+    'Redesigned lock screen password prompt with a centered frosted glass pill over blurred wallpaper',
+    'Moved system controls cluster beside date/time on the left of the dock with minimal Quick Settings tiles and slim blue slider',
+    'Larger 58px dock icons with 78% artwork fill and frosted dark glass squircle & folder tiles',
+    'Streamlined Software Update UI with bullet-list release notes, top Install pill, Wi-Fi detection, and cached download reuse',
+    'Full Proxim OS white-labeling in Settings About/System Details and Package Installer',
   ],
 }
 

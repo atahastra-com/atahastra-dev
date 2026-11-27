@@ -1,22 +1,21 @@
 {
-  "version": "1.1",
-  "name": "Proxim OS 1.1",
+  "version": "1.2",
+  "name": "Proxim OS 1.2",
   "channel": "stable",
-  "released": "2026-11-26",
-  "released_at": "2026-11-26",
-  "url": "https://github.com/atahastra-com/proxim/releases/download/v1.1/proxim-os-1.1.pxu",
-  "size_bytes": 43511156,
-  "sha256": "0163532be1a504e8736e48598be94b614b0c98b4c22cb1b75446cec05063cf3d",
-  "signature": "g7uXr+b1Dn25QaGccWMOJxPnk+pCOr+srSTM/vmIzsHf7B9/+ZkQrsgVnm/P9EHT/zG3wQCeLMIyoSuJMHpsBw==",
+  "released": "2026-11-27",
   "notes": [
-    "New Kora icon theme on supersampled satin-obsidian squircles + matching Launchpad folder tiles",
-    "Redesigned setup/installer Wi-Fi UI with live clickable network list & password dialog",
-    "Auto-hide dock and bottom bar during initial setup & Live USB installer",
-    "Compact Package Installer (.deb) with collapsible details, auto-resizing window, Open Now button, and auto-close after uninstall",
-    "Right-click Uninstall option on Launchpad for user-installed apps",
-    "Fixed Flight / Airplane Mode (rfkill permissions + NetworkManager sync)",
-    "Pre-created unlocked default keyring for autologin (no keyring password prompt on first Chrome launch)",
-    "Fixed Chrome window caption buttons (removed oversized titlebutton circles)",
-    "Added System (/) bookmark in Files sidebar and removed GNOME Maps from default apps"
-  ]
+    "Built-in Proxim AI right-side panel in the dock supporting Gemini, OpenAI, Claude, AWS Bedrock, Custom OpenAI-compatible APIs, and Local Ollama",
+    "Full OS agent control: launch apps, manage windows, control volume/Wi-Fi/DND, live screen vision, mouse & keyboard automation, and visible Terminal execution",
+    "Clean collapsed activity dropdown in Proxim AI chat with safety confirmation before destructive actions",
+    "Dark blurred glass app windows with minimal boxless headers, translucent frosted lists, and matching dark-blur dock, Calendar, and Quick Settings popups",
+    "Redesigned lock screen password prompt with a centered frosted glass pill over blurred wallpaper",
+    "Moved system controls cluster beside date/time on the left of the dock with minimal Quick Settings tiles and slim blue slider",
+    "Larger 58px dock icons with 78% artwork fill and frosted dark glass squircle & folder tiles",
+    "Streamlined Software Update UI with bullet-list release notes, top Install pill, Wi-Fi detection, and cached download reuse",
+    "Full Proxim OS white-labeling in Settings About/System Details and Package Installer"
+  ],
+  "size_bytes": 42759192,
+  "sha256": "25ecf20b57842acd2661131e0dc8e0616414b1d6bcb2aa1d8c5f24934b085f6b",
+  "url": "https://github.com/atahastra-com/proxim/releases/download/v1.2/proxim-os-1.2.pxu",
+  "signature": "CKpdRlsYmet4VLzAn9ET5BzWXvOA2cfIYImPMX76eJYM7q7TP2R+aZ7xLWicyg2NBqu1AE0VafwJlvXvpWawBw=="
 }
