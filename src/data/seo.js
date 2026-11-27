@@ -18,6 +18,12 @@ export const PAGE_SEO = {
     description:
       'Proxim OS 1.2 by Atahastra: a fast, simple, Debian-based desktop OS with built-in Proxim AI, dark blurred glass UI, signed OTA updates, and zero telemetry.',
   },
+  releases: {
+    path: '/releases',
+    title: 'Releases | Proxim OS | Atahastra',
+    description:
+      'Release notes, ISO download, SHA-256 checksum, and OTA update manifest for Proxim OS.',
+  },
   about: {
     path: '/about',
     title: 'About | Atahastra',

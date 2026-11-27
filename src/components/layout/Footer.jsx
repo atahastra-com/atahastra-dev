@@ -6,7 +6,7 @@ import { CONTACT_EMAIL } from '../../data/contact'
 const productLinks = [
   { label: 'Proxim OS', to: '/proxim-os' },
   { label: 'Install', to: '/#install' },
-  { label: 'Release Notes', to: '/#releases' },
+  { label: 'Releases', to: '/releases' },
 ]
 
 const companyLinks = [

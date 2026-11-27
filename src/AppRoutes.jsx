@@ -5,6 +5,7 @@ import PageFallback from './components/ui/PageFallback'
 import Home from './pages/Home'
 import ProximOS from './pages/ProximOS'
 
+const Releases = lazy(() => import('./pages/Releases'))
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Privacy = lazy(() => import('./pages/Privacy'))
@@ -20,6 +21,7 @@ export default function AppRoutes() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/proxim-os" element={<ProximOS />} />
+          <Route path="/releases" element={<Releases />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />

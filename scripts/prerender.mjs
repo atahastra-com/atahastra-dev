@@ -25,6 +25,7 @@ const {
 const ROUTES = [
   { key: 'home', url: '/', file: 'index.html' },
   { key: 'proximOs', url: '/proxim-os', file: 'proxim-os.html' },
+  { key: 'releases', url: '/releases', file: 'releases.html' },
   { key: 'about', url: '/about', file: 'about.html' },
   { key: 'contact', url: '/contact', file: 'contact.html' },
   { key: 'privacy', url: '/privacy', file: 'privacy.html' },
@@ -140,7 +141,7 @@ for (const route of ROUTES) {
 
 const today = new Date().toISOString().slice(0, 10)
 const sitemapPages = ROUTES.filter((r) => !PAGE_SEO[r.key].noindex)
-const priorities = { home: '1.0', proximOs: '0.9', contact: '0.7', about: '0.7' }
+const priorities = { home: '1.0', proximOs: '0.9', releases: '0.8', contact: '0.7', about: '0.7' }
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapPages

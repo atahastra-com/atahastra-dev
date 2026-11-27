@@ -5,7 +5,7 @@ import Logo from '../ui/Logo'
 const navLinks = [
   { label: 'Features', to: '/#features' },
   { label: 'Install', to: '/#install' },
-  { label: 'Releases', to: '/#releases' },
+  { label: 'Releases', to: '/releases' },
   { label: 'About', to: '/about' },
 ]
 
